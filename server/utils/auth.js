@@ -11,7 +11,7 @@ module.exports = {
     },
   }),
   authMiddleware: function ({ req }) {
-    let token = req.headers.authorization;
+    let token = req.body.token || req.query.token || req.headers.authorization;
 
     if (token) {
       token = token.split(' ').pop().trim();
