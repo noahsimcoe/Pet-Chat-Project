@@ -1,0 +1,32 @@
+#profile-page {
+    h1 {
+        margin: 4rem auto;
+        text-align: center;
+    }
+
+    .loading-data {
+        width: 90%;
+        max-width: 600px;
+        margin: 2rem auto;
+        text-align: center;
+    }
+
+    .display-user {
+        width: 90%;
+        max-width: 600px;
+        margin: 2rem auto;
+        list-style: none;
+
+        li {
+            padding: 0;
+            margin: 1rem 0;
+            color: #555;
+
+            .display-user__label {
+                font-weight: bold;
+                margin-right: 1rem;
+                color: #000;
+            }
+        }
+    }
+}

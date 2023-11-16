@@ -1,0 +1,30 @@
+#login-form {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    max-width: 600px;
+    margin: 5vh auto;
+
+    &>div {
+        display: flex;
+        justify-content: space-between;
+        margin: 1rem 0;
+        font-size: 1.3rem;
+
+        label {
+            flex: 0 8rem;
+        }
+
+        input {
+            flex: 1;
+            margin-left: 2rem;
+        }
+
+        button {
+            border-radius: 0.3rem;
+            padding: 0.5rem 2rem;
+            font-size: 1.6rem;
+            margin: 1rem auto;
+        }
+    }
+}
