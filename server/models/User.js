@@ -24,7 +24,12 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
+  pets: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Pet' }],
+  reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
+  services: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Service' }],
+}, { timestamps: true 
 });
+
 
 userSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
