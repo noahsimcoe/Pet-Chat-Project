@@ -12,6 +12,20 @@ const resolvers = {
     }
   },
   Mutation: {
+    //create user may need addressing
+    createUser: async (parent, { username, email }) => {
+      const newUser = {
+        id: String(User.length + 1),
+        username,
+        email,
+      }
+
+      User.push(newUser);
+
+      return newUser;
+    },
+
+
     signin: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
