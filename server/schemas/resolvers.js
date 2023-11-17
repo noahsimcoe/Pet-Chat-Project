@@ -44,6 +44,22 @@ const resolvers = {
       const token = signToken(user);
 
       return { token };
+    },
+
+    createPet: async (parent, { name, species, breed, ownerId, birthdate, image, weight, height, vaccinations }, context, info) => {
+      const newPet = await Pet.create({
+        name,
+        species,
+        breed,
+        owner: ownerId, // ID of User
+        birthdate,
+        image,
+        weight,
+        height,
+        vaccinations,
+      });
+
+      return { pet: newPet };
     }
   }
 };

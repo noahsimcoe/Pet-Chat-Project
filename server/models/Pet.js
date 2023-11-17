@@ -14,8 +14,8 @@ const petSchema = new Schema({
     ref: 'User',
     required: true,
   },
-  birthdate: Date,
-  image: String, // URL or maybe file path??
+  birthdate: String,
+  image: String, // URL to cloud hosted image
   weight: Number,
   height: Number,
   vaccinations: {

@@ -39,3 +39,45 @@ export const SIGNIN_MUTATION = gql`
     }
   }
 `;
+
+export const CREATE_PET = gql`
+  mutation createPet(
+    $name: String!
+    $species: String
+    $breed: String
+    $ownerId: ID!
+    $birthdate: String
+    $image: String
+    $weight: Float
+    $height: Float
+    $vaccinations: Boolean
+  ) {
+    createPet(
+      name: $name
+      species: $species
+      breed: $breed
+      ownerId: $ownerId
+      birthdate: $birthdate
+      image: $image
+      weight: $weight
+      height: $height
+      vaccinations: $vaccinations
+    ) {
+        _id
+        name
+        species
+        breed
+        owner {
+          _id
+          firstName
+        }
+        birthdate
+        image
+        weight
+        height
+        vaccinations
+      }
+  }
+`;
+
+
