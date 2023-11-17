@@ -1,4 +1,5 @@
 const { User } = require('../models');
+const { Pet } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -7,13 +8,12 @@ const resolvers = {
       if (!context.user) {
         throw AuthenticationError;
       }
-
       return await User.findById(context.user._id);
+    },
+    pets: async () => {
+      const allPets = await Pet.find();
+      return allPets;
     }
-  },
-  pets: async () => {
-    const allPets = await Pet.find();
-    return allPets;
   },
   Mutation: {
     //create user may need addressing

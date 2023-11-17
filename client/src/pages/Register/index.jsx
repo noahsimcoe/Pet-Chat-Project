@@ -10,6 +10,7 @@ export default function Register() {
 
   const [imageUpload, setImageUpload] = useState(null);
   const [imageList, setImageList] = useState([]);
+  const [newImageUrl, setNewImageUrl] = useState('');
 
   const imageListRef = ref(storage, "images/");
 
@@ -18,15 +19,21 @@ export default function Register() {
     if (imageUpload == null) return
     // helps ensure all images have different names
     const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+
+    //console.log(imageRef);
+    //console.log(imageRefLink);
+
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
       // confirmation that image was uploaded
       // alert("Image Uploaded");
       getDownloadURL(snapshot.ref).then((url) => {
         setImageList((prev) => [...prev, url])
-      })
+        setNewImageUrl(url);
+      });
     });
   };
 
+  // creating a new array of the newest images
   useEffect(() => {
     listAll(imageListRef).then((response) => {
       //console.log(response);
@@ -43,6 +50,8 @@ export default function Register() {
     <div id="register-page">
         <h1>Register a Pet</h1>
         <h2>**Placeholder text for where the rest of 'pet creation' inputs will be**</h2>
+        <h3>Current ImageUrl</h3>
+        <h6>{newImageUrl}</h6>
 
         <div class="add-picture-section">
           <h4>Add a picture of your animal below</h4>

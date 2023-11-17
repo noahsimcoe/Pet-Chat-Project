@@ -38,7 +38,7 @@ const typeDefs = `
     provider: User
     reviews: [Review]
   }
-  
+
   type Auth {
     token: ID
     user: User
@@ -46,6 +46,7 @@ const typeDefs = `
 
   type Query {
     user: User
+    pets: Pet
   }
 
   type Mutation {

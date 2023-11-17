@@ -17,7 +17,6 @@ export const QUERY_PETS = gql`
       _id
       name
       species
-      // ... other fields
     }
   }
 `;
