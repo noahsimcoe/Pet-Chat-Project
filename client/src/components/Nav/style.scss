@@ -6,12 +6,9 @@ header {
     align-items: center;
     box-shadow: 0 0 3px 1px rgba(150, 150, 150, 0.8);
 
-    .header-logo {
-        width: 46px;
-    }
-
+    
     &.header-theme__light {
-        background-color: #DDD;
+        background-color: #9a8d8d;
     }
 
     &.header-theme__dark {
