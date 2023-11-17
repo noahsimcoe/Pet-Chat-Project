@@ -13,14 +13,15 @@ const resolvers = {
   },
   Mutation: {
     //create user may need addressing
-    createUser: async (parent, { username, email }) => {
+    createUser: async (parent, { firstName, email, password }) => {
       const newUser = {
         id: String(User.length + 1),
-        username,
+        firstName,
         email,
+        password
       }
 
-      User.push(newUser);
+      User.create(newUser);
 
       return newUser;
     },
