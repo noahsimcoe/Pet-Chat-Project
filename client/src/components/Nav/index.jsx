@@ -4,7 +4,7 @@ import { THEME_TOGGLE } from "../../utils/actions";
 import { useStoreContext } from "../../utils/store-context";
 import Auth from "../../utils/auth";
 
-import logo from '../../assets/images/logo.png';
+import petLogo from '../../assets/images/petLogo.png';
 import darkToggle from '../../assets/images/dark-toggle.svg';
 
 import './style.scss';
@@ -15,7 +15,7 @@ export default function Nav() {
   return (
     <header className={`header-theme__${theme.dark ? 'dark' : 'light'}`}>
       <div>
-        <img className="header-logo" src={logo} alt="Logo" />
+        <img className="header-logo" src={petLogo} alt="Logo" />
       </div>
 
       <div>
