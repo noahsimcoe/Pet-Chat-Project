@@ -1,5 +1,7 @@
 const { GraphQLError } = require('graphql');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
+
 
 const secret = process.env.AUTH_SECRET;
 const expiration = '2h';
@@ -13,7 +15,7 @@ module.exports = {
   authMiddleware: function ({ req }) {
     let token = req.body.token || req.query.token || req.headers.authorization;
 
-    if (token) {
+    if (req.headers.authorization) {
       token = token.split(' ').pop().trim();
     }
 
@@ -32,7 +34,7 @@ module.exports = {
   },
   signToken: function ({ firstName, email, _id }) {
     const payload = { firstName, email, _id };
-
+    console.log(secret);
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
 };

@@ -9,8 +9,8 @@ import {
 
 import { StoreProvider } from './utils/store-context';
 import Nav from './components/Nav';
-import Login from './components/Login';
 import Auth from './utils/auth'
+import Landing from "./pages/Landing";
 
 import './app.scss';
 
@@ -38,7 +38,7 @@ function App() {
       <StoreProvider>
         <div id="app-shell">
           <Nav />
-          {Auth.loggedIn() ? <Outlet /> : <Login />}
+          {Auth.loggedIn() ? <Outlet /> : <Landing />}
         </div>
       </StoreProvider>
     </ApolloProvider>
