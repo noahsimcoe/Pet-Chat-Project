@@ -41,6 +41,7 @@ const typeDefs = `
   
   type Auth {
     token: ID
+    user: User
   }
 
   type Query {
@@ -48,7 +49,7 @@ const typeDefs = `
   }
 
   type Mutation {
-    createUser(firstName: String!, email: String!, password: String!): User
+    createUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     signin(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
   }

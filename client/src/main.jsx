@@ -5,7 +5,7 @@ import App from './App.jsx';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Register from './pages/Register';
-import NotFound from './pages/NotFound.jsx'
+import NotFound from './pages/NotFound.jsx';
 
 import './index.css'
 
