@@ -10,3 +10,14 @@ export const QUERY_USER = gql`
     }
   }
 `;
+
+export const QUERY_PETS = gql`
+  {
+    pets {
+      _id
+      name
+      species
+      // ... other fields
+    }
+  }
+`;

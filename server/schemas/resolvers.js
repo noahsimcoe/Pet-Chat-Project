@@ -11,6 +11,10 @@ const resolvers = {
       return await User.findById(context.user._id);
     }
   },
+  pets: async () => {
+    const allPets = await Pet.find();
+    return allPets;
+  },
   Mutation: {
     //create user may need addressing
     createUser: async (parent, { firstName, lastName, email, password }) => {
