@@ -1,12 +1,16 @@
 #footer{
+    box-shadow: 0 0 3px 1px rgba(150, 150, 150, 0.8);
+    background-color: #9a8d8d;
     h3 {
-        margin: 4rem auto;
+        margin: 0 4px;
         text-align: center;
+
     }
     p {
-        margin: 0 800px 0 800px;
+       
         display: flex;
-        justify-content: space-between;
+        margin: 10px 500px;
+        justify-content: space-evenly;
         text-align: center;
 
         
