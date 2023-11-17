@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
+import { Card, Form, Button } from 'react-bootstrap'; // Import Card, Form, and Button from react-bootstrap
 import { CREATE_USER } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
@@ -12,10 +13,10 @@ const Signup = () => {
     email: '',
     password: '',
   });
-  const [createUser, {error, data}] =useMutation(CREATE_USER);
+  const [createUser, { error, data }] = useMutation(CREATE_USER);
 
   const handleChange = (event) => {
-    const { name, value } = event.taget;
+    const { name, value } = event.target; // Fix the typo in "event.taget"
 
     setFormStage({
       ...formState,
@@ -38,71 +39,82 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
-          <div className="card-body">
-            {data ? (
-              <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
-              </p>
-            ) : (
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Your first name"
-                  name="firstName"
-                  type="text"
-                  value={formState.name}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="Your first name"
-                  name="lastName"
-                  type="text"
-                  value={formState.name}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <button
-                  className="btn btn-block btn-info"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </form>
-            )}
+    <Card style={{ width: '18rem' }}>
+      <Card.Body>
+        <Card.Title>Sign Up</Card.Title>
+        <Form onSubmit={handleFormSubmit}>
+          <Form.Group controlId="formFirstName">
+            <Form.Label>Your first name</Form.Label>
+            <Form.Control
+              className="form-input"
+              type="text"
+              placeholder="Enter your first name"
+              name="firstName"
+              value={formState.firstName}
+              onChange={handleChange}
+            />
+          </Form.Group>
 
-            {error && (
-              <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
-              </div>
-            )}
+          <Form.Group controlId="formLastName">
+            <Form.Label>Your last name</Form.Label>
+            <Form.Control
+              className="form-input"
+              type="text"
+              placeholder="Enter your last name"
+              name="lastName"
+              value={formState.lastName}
+              onChange={handleChange}
+            />
+          </Form.Group>
+
+          <Form.Group controlId="formEmail">
+            <Form.Label>Your email</Form.Label>
+            <Form.Control
+              className="form-input"
+              type="email"
+              placeholder="Enter your email"
+              name="email"
+              value={formState.email}
+              onChange={handleChange}
+            />
+          </Form.Group>
+
+          <Form.Group controlId="formPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              className="form-input"
+              type="password"
+              placeholder="******"
+              name="password"
+              value={formState.password}
+              onChange={handleChange}
+            />
+          </Form.Group>
+
+          <Button
+            className="btn-block btn-info"
+            style={{ cursor: 'pointer' }}
+            type="submit"
+          >
+            Submit
+          </Button>
+        </Form>
+
+        {data ? (
+          <p>
+            Success! You may now head{' '}
+            <Link to="/">back to the homepage.</Link>
+          </p>
+        ) : null}
+
+        {error && (
+          <div className="my-3 p-3 bg-danger text-white">
+            {error.message}
           </div>
-        </div>
-      </div>
-    </main>
+        )}
+      </Card.Body>
+    </Card>
   );
-
 };
 
 export default Signup;
