@@ -4,6 +4,8 @@ import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
 import { v4 } from 'uuid';
 import { useEffect } from 'react';
 
+import CreatePet from '../../components/PetCreate';
+
 import './style.scss';
 
 export default function Register() {
@@ -63,6 +65,8 @@ export default function Register() {
           />
           <button onClick={uploadImage}>Upload Pet Picture</button>
         </div>
+
+        <CreatePet />
 
         <div class="image-container">
           {imageList.map((url) => {

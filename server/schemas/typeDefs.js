@@ -53,6 +53,7 @@ const typeDefs = `
     createUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     signin(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    createPet(name: String!, species: String, breed: String, ownerId: ID!, birthdate: String, image: String, weight: Float, height: Float, vaccinations: Boolean): Pet
   }
 `;
 
