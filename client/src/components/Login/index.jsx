@@ -4,12 +4,29 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_MUTATION } from '../../utils/mutations'
 import Auth from '../../utils/auth';
 
+import { Icon } from 'react-icons-kit';
+import { eyeBlocked } from 'react-icons-kit/icomoon/eyeBlocked';
+import { eye } from 'react-icons-kit/feather/eye';
+
+
 import './style.scss';
 
 export default function Nav() {
     const [login, { loading }] = useMutation(LOGIN_MUTATION);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [type, setType] = useState('password');
+    const [icon, setIcon] = useState(eyeBlocked);
+
+    const handleToggle = () => {
+        if (type === 'passsword') {
+            setIcon(eye);
+            setType('text');
+        } else {
+            setIcon(eyeBlocked);
+            setType('password');
+        }
+    };
 
     const logingHandler = async (evt) => {
         evt.preventDefault();
@@ -27,14 +44,29 @@ export default function Nav() {
 
     return (
         <form id="login-form" onSubmit={logingHandler}>
-            <div>
-                <label htmlFor="login-form-email">Email</label>
-                <input id="login-form-email" type="text" onChange={(evt) => setEmail(evt.target.value)} />
+            <div className='mb-3'>
+                <label htmlFor="login-form-email" className='form-label'>Email</label>
+                <input id="login-form-email"
+                type="text"
+                className='form-control'
+                onChange={(evt) => setEmail(evt.target.value)} />
             </div>
-            <div>
-                <label htmlFor="login-form-password">Password</label>
-                <input id="login-form-password" type="text" onChange={(evt) => setPassword(evt.target.value)} />
+
+            <div className='mb-3'>
+                <label htmlFor="login-form-password" >Password</label>
+                <div className="password-container">
+                    <input id="login-form-password"
+                    type="password"
+                    className='form-control'
+                    onChange={(evt) => setPassword(evt.target.value)} 
+                    
+                    />
+                    <span className="icon-container" onClick={handleToggle} style={{ cursor: 'pointer' }} >
+                        <Icon className='mr-10' icon={icon} size={15}></Icon>
+                    </span>
+                </div>
             </div>
+            
             <div>
                 <button type="submit" disabled={loading}>Login</button>
             </div>
