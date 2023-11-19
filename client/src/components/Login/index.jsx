@@ -43,21 +43,28 @@ export default function Nav() {
     }
 
     return (
+        <>
+        
         <form id="login-form" onSubmit={logingHandler}>
+        <p className='loginTitle'> Login </p>
             <div className='mb-3'>
+                <div>
                 <label htmlFor="login-form-email" className='form-label'>Email</label>
+                </div>
                 <input id="login-form-email"
                 type="text"
-                className='form-control'
+                className='form-control form-input'
                 onChange={(evt) => setEmail(evt.target.value)} />
             </div>
 
             <div className='mb-3'>
+                <div>
                 <label htmlFor="login-form-password" >Password</label>
+                </div>
                 <div className="password-container">
                     <input id="login-form-password"
                     type="password"
-                    className='form-control'
+                    className='form-control form-input'
                     onChange={(evt) => setPassword(evt.target.value)} 
                     
                     />
@@ -68,8 +75,9 @@ export default function Nav() {
             </div>
             
             <div>
-                <button type="submit" disabled={loading}>Login</button>
+                <button type="submit" disabled={loading} className='submit-btn'>Login</button>
             </div>
         </form>
+        </>
     );
 }
