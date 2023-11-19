@@ -7,7 +7,7 @@ export const Landing = () => {
   <div className="container">
     
     <Signup className='signup'/>
-    <h1>Login</h1>
+    
     <Login />
   </div>
   );
