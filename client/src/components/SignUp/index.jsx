@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { Card, Form, Button } from 'react-bootstrap'; // Import Card, Form, and Button from react-bootstrap
+import { Card, Form, Button } from 'react-bootstrap'; 
 import { CREATE_USER } from '../../utils/mutations';
 
+
 import Auth from '../../utils/auth';
+
+import './style.scss';
 
 const Signup = () => {
   const [formState, setFormStage] = useState({
@@ -16,7 +19,7 @@ const Signup = () => {
   const [createUser, { error, data }] = useMutation(CREATE_USER);
 
   const handleChange = (event) => {
-    const { name, value } = event.target; // Fix the typo in "event.taget"
+    const { name, value } = event.target; 
 
     setFormStage({
       ...formState,
@@ -39,12 +42,14 @@ const Signup = () => {
   };
 
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card className="signup-card" >
       <Card.Body>
-        <Card.Title>Sign Up</Card.Title>
+        <Card.Title className='card-title'>Sign Up</Card.Title>
         <Form onSubmit={handleFormSubmit}>
           <Form.Group controlId="formFirstName">
-            <Form.Label>Your first name</Form.Label>
+            <div>
+            <Form.Label>First Name</Form.Label>
+            </div>
             <Form.Control
               className="form-input"
               type="text"
@@ -56,7 +61,9 @@ const Signup = () => {
           </Form.Group>
 
           <Form.Group controlId="formLastName">
-            <Form.Label>Your last name</Form.Label>
+            <div>
+            <Form.Label>Last Name</Form.Label>
+            </div>
             <Form.Control
               className="form-input"
               type="text"
@@ -68,7 +75,9 @@ const Signup = () => {
           </Form.Group>
 
           <Form.Group controlId="formEmail">
-            <Form.Label>Your email</Form.Label>
+            <div>
+            <Form.Label>Email Address</Form.Label>
+            </div>
             <Form.Control
               className="form-input"
               type="email"
@@ -80,7 +89,9 @@ const Signup = () => {
           </Form.Group>
 
           <Form.Group controlId="formPassword">
+            <div>
             <Form.Label>Password</Form.Label>
+            </div>
             <Form.Control
               className="form-input"
               type="password"
@@ -92,7 +103,7 @@ const Signup = () => {
           </Form.Group>
 
           <Button
-            className="btn-block btn-info"
+            className="btn-block  submit-btn" 
             style={{ cursor: 'pointer' }}
             type="submit"
           >
