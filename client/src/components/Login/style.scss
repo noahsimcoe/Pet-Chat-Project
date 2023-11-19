@@ -1,7 +1,10 @@
 #login-form {
-    display: flex;
-    flex-direction: column;
-    width: 95%;
-    max-width: 600px;
-    margin: 5vh auto;
+    width: 300px; // Adjust the width as needed
+    margin: 0 auto; // Center the card horizontally
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #fff;
+    margin-bottom: 50px;
 }
+

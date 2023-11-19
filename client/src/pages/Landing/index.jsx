@@ -4,9 +4,9 @@ import Login from '../../components/Login';
 export const Landing = () => {
   return (
 
-  <div>
+  <div className="container">
     
-    <Signup />
+    <Signup className='signup'/>
     <h1>Login</h1>
     <Login />
   </div>
