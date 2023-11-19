@@ -60,6 +60,15 @@ const resolvers = {
       });
 
       return { pet: newPet };
+    },
+    deletePet: async (parent, { petId }, context, info) => {
+      const deletedPet = await Pet.findByIdAndDelete(petId);
+  
+      if (!deletedPet) {
+        throw new Error("Pet not found");
+      }
+  
+      return deletedPet;
     }
   }
 };
