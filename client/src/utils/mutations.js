@@ -79,5 +79,24 @@ export const CREATE_PET = gql`
       }
   }
 `;
+export const DELETE_PET = gql`
+  mutation deletePet($petId: ID!) {
+    deletePet(petId: $petId) {
+      _id
+      name
+      species
+      breed
+      owner {
+        _id
+        firstName
+      }
+      birthdate
+      image
+      weight
+      height
+      vaccinations
+    }
+  }
+`;
 
 
