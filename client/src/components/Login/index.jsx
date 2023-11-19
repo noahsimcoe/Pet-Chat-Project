@@ -15,13 +15,14 @@ export default function Nav() {
     const [login, { loading }] = useMutation(LOGIN_MUTATION);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [type, setType] = useState('password');
+    const [typeP, setType] = useState('password');
     const [icon, setIcon] = useState(eyeBlocked);
 
     const handleToggle = () => {
-        if (type === 'passsword') {
+        if (typeP == 'password') {
             setIcon(eye);
             setType('text');
+            console.log("if")
         } else {
             setIcon(eyeBlocked);
             setType('password');
@@ -63,13 +64,13 @@ export default function Nav() {
                 </div>
                 <div className="password-container">
                     <input id="login-form-password"
-                    type="password"
-                    className='form-control form-input'
+                    type={typeP}
+                    className='form-control'
                     onChange={(evt) => setPassword(evt.target.value)} 
                     
                     />
-                    <span className="icon-container" onClick={handleToggle} style={{ cursor: 'pointer' }} >
-                        <Icon className='mr-10' icon={icon} size={15}></Icon>
+                    <span className="icon-container"  style={{ cursor: 'pointer' }} >
+                        <Icon className='mr-10' onClick={handleToggle} icon={icon} size={15}></Icon>
                     </span>
                 </div>
             </div>
