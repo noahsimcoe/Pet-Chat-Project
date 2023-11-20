@@ -56,7 +56,7 @@ const typeDefs = `
     createPet(name: String!, species: String, breed: String, ownerId: ID!, birthdate: String, image: String, weight: Float, height: Float, vaccinations: Boolean): Pet
     deletePet(petId: ID!): Pet
     createReview(userId: ID!, service: String!, rating: Int!, comment: String): Review
-    DeleteReview(Reviewid: ID!): Review
+    deleteReview(reviewId: ID!): Review
   }
 `;
 
