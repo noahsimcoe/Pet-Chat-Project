@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Pet, Review } = require('../models');
 const { Pet } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
@@ -69,8 +69,31 @@ const resolvers = {
       }
   
       return deletedPet;
-    }
+    },
+    createReview: async (parent, { userId, service, rating, comment }, context, info) => {
+      const newReview = await Review.create({
+        user: userId, 
+        service,
+        rating,
+        comment,
+      });
+    
+      return { review: newReview };
+    },
+    deleteReview: async (parent, { reviewId }, context, info) => {
+      
+      const deletedReview = await Review.findByIdAndDelete(reviewId);
+    
+      if (!deletedReview) {
+        throw new Error("Review not found");
+      }
+    
+      return deletedReview;
+    },
   }
 };
+
+
+
 
 module.exports = resolvers;
