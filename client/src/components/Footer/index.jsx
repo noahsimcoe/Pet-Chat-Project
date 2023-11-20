@@ -9,11 +9,18 @@ function Footer() {
     <div id="footer">
       <h3>petCHAT 2023</h3>
       <p>
-        <Link to="https://github.com/Jaxson20"><FontAwesomeIcon icon={faSquareGithub} size="lg" style={{color: "#f7f7f7",}} /></Link>
-        <Link to="https://github.com/britaing"><FontAwesomeIcon icon={faSquareGithub} size="lg" style={{color: "#f7f7f7",}} /></Link>
-        <Link to="https://github.com/elchinatalpf"><FontAwesomeIcon icon={faSquareGithub} size="lg" style={{color: "#f7f7f7",}} /></Link>
-        <Link to="https://github.com/noahsimcoe" ><FontAwesomeIcon icon={faSquareGithub} size="lg" style={{color: "#f7f7f7",}} /></Link>
-       
+        <div>
+        <Link to="https://github.com/Jaxson20"><FontAwesomeIcon icon={faSquareGithub} size="lg" style={{color: "#6E7C7C",}} /></Link>
+        </div>
+        <div>
+        <Link to="https://github.com/britaing"><FontAwesomeIcon icon={faSquareGithub} size="lg" style={{color: "#6E7C7C",}} /></Link>
+        </div>
+        <div>
+        <Link to="https://github.com/elchinatalpf"><FontAwesomeIcon icon={faSquareGithub} size="lg" style={{color: "#6E7C7C",}} /></Link>
+        </div>
+        <div>
+        <Link to="https://github.com/noahsimcoe" ><FontAwesomeIcon icon={faSquareGithub} size="lg" style={{color: "#6E7C7C",}} /></Link>
+        </div>
       </p>
     </div>
   );

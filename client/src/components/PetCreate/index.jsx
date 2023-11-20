@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { CREATE_PET } from '../../utils/mutations';
+import { Card, Form, Button } from 'react-bootstrap'; 
+
+import './style.scss';
+
 
 const CreatePet = () => {
     const [formState, setFormStage] = useState({
@@ -29,16 +33,15 @@ const CreatePet = () => {
     const { name, checked } = event.target;
     setFormStage({
       ...formState,
-      [name]: checked, // Set the boolean value directly from checked attribute
+      [name]: checked, 
     });
   };
 
   const handleChangeNum = (event) => {
     const { name, value } = event.target;
-    // Convert the input value to a float and update the form state
     setFormStage({
       ...formState,
-      [name]: parseFloat(value), // Convert the input value to a float
+      [name]: parseFloat(value),
     });
   };
 
@@ -56,6 +59,8 @@ const CreatePet = () => {
   };
 
   return (
+    <>
+    <Card className='createPetCard'>
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
         <div className="card">
@@ -107,23 +112,24 @@ const CreatePet = () => {
                     className="form-input"
                     placeholder="pet height"
                     name="height"
-                    type="number" // Use type number for float values
-                    step="0.5" // Specify step attribute for decimal values (optional)
+                    type="number" 
+                    step="0.5" 
                     value={formState.height}
                     onChange={handleChangeNum}
                     />
+                <div>
                 <label>Vaccinated?</label>
                 <input
                     className="form-input"
                     placeholder="pet vaccinations"
                     name="vaccinations"
-                    type="checkbox" // Use type checkbox for boolean values
-                    checked={formState.vaccinations} // Use checked attribute for checkbox
-                    onChange={handleChangeCheckbox} // Use onChange for handling checkbox changes
+                    type="checkbox" 
+                    checked={formState.vaccinations} 
+                    onChange={handleChangeCheckbox} 
                 />
+                </div>
                 <button
-                  className="btn btn-block btn-info"
-                  style={{ cursor: 'pointer' }}
+                  className="btn btn-block btn-info submit-btn"
                   type="submit"
                 >
                   Submit
@@ -140,6 +146,8 @@ const CreatePet = () => {
         </div>
       </div>
     </main>
+    </Card>
+    </>
   );
 
 };
