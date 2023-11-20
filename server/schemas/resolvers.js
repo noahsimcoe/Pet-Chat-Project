@@ -8,7 +8,7 @@ const resolvers = {
       if (!context.user) {
         throw AuthenticationError;
       }
-      return await User.findById(context.user._id);
+      return await User.findById(context.user._id).populate('pets');
     },
     pets: async () => {
       const allPets = await Pet.find();

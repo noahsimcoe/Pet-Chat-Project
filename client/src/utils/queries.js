@@ -7,6 +7,18 @@ export const QUERY_USER = gql`
       firstName
       lastName
       email
+      pets {
+        _id
+        name
+        species
+        breed
+        owner
+        birthday
+        image
+        weight
+        height
+        vaccinations
+      }
     }
   }
 `;
