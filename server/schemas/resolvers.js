@@ -1,5 +1,4 @@
 const { User, Pet, Review } = require('../models');
-const { Pet } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
