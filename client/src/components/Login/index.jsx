@@ -61,7 +61,7 @@ export default function Nav() {
                 <div>
                 <label htmlFor="login-form-password" >Password</label>
                 </div>
-                <div className="password-container">
+                <div className="password-container form-input">
                     <input id="login-form-password"
                     type={typeP}
                     className='form-control'
