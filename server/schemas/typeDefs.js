@@ -55,6 +55,9 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     createPet(name: String!, species: String, breed: String, ownerId: ID!, birthdate: String, image: String, weight: Float, height: Float, vaccinations: Boolean): Pet
     deletePet(petId: ID!): Pet
+    createReview(userId: ID!, service: String!, rating: Int!, comment: String): Review
+    DeleteReview(Reviewid: ID!): Review
+  }
 `;
 
 module.exports = typeDefs;

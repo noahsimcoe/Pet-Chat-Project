@@ -98,5 +98,35 @@ export const DELETE_PET = gql`
     }
   }
 `;
+export const CREATE_REVIEW = gql`
+  mutation createReview($userId: ID!, $service: String!, $rating: Float!, $comment: String) {
+    createReview(userId: $userId, service: $service, rating: $rating, comment: $comment) {
+      review {
+        _id
+        user {
+          _id
+          firstName
+          lastName
+        }
+        service
+        rating
+        comment
+      }
+    }
+  }
+`;
 
-
+export const DELETE_REVIEW = gql`
+mutation DeleteReview($reviewId: ID!) {
+  deleteReview(reviewId: $reviewId) {
+    _id
+    user {
+      _id
+      firstName
+    }
+    service
+    rating
+    comment
+  }
+}
+`;
