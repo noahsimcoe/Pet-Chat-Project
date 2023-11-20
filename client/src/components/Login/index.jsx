@@ -22,7 +22,6 @@ export default function Nav() {
         if (typeP == 'password') {
             setIcon(eye);
             setType('text');
-            console.log("if")
         } else {
             setIcon(eyeBlocked);
             setType('password');
