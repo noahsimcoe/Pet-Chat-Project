@@ -15,7 +15,7 @@ export default function Profile() {
     if (data && data.user) {
       dispatch({ type: USER_PROFILE, payload: data.user })
     }
-  }, [data]);
+  }, [data, dispatch]);
 
   return (
     <div id="profile-page">
@@ -28,6 +28,7 @@ export default function Profile() {
       )}
 
       {user?.profile && (
+        <>
         <ul className="display-user">
           <li>
             <span className="display-user__label">User ID:</span> <span>{user.profile.id}</span>
@@ -39,8 +40,21 @@ export default function Profile() {
             <span className="display-user__label">Email:</span> <span>{user.profile.email}</span>
           </li>
         </ul>
-      )
-      }
+
+        {user.profile.pets && user.profile.pets.length > 0 && (
+          <div>
+            <h2>My pets</h2>
+            <ul>
+              {user.profile.pets.map(pet =>(
+                <li key={pet._id}> {pet.name} - {pet.species}</li>
+              ))}
+            </ul>
+          </div>
+
+        )}
+
+        </>
+      )}
     </div>
   );
 };
