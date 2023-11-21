@@ -96,6 +96,7 @@ const resolvers = {
         name: serviceName,
         description,
         provider: userId,
+        image,
       });
 
       return { service: newService };
