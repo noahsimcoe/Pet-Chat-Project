@@ -1,4 +1,4 @@
-const { User, Pet, Review } = require('../models');
+const { User, Pet, Review, service} = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -29,7 +29,7 @@ const resolvers = {
 
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
-
+      
       if (!user) {
         throw AuthenticationError;
       }
@@ -37,11 +37,12 @@ const resolvers = {
       const correctPw = await user.verifyPassword(password);
 
       if (!correctPw) {
+        
         throw AuthenticationError;
       }
 
       const token = signToken(user);
-
+  
       return { token };
     },
 
@@ -86,13 +87,45 @@ const resolvers = {
       if (!deletedReview) {
         throw new Error("Review not found");
       }
-    
+      
       return deletedReview;
+    },
+    
+    createService: async (parent, { serviceName, description, userId }, context, info) => {
+      const newService = await Service.create({
+        name: serviceName,
+        description,
+        provider: userId,
+      });
+
+      return { service: newService };
+    },
+
+    deleteService: async (parent, { serviceId, userId }, context, info) => {
+      if (!context.user) {
+        throw AuthenticationError;
+      }
+
+      const service = await Service.findById(serviceId);
+
+      if (!service) {
+        throw new Error("Service not found");
+      }
+
+      if (service.provider.toString() !== userId) {
+        throw new Error("User is not authorized to delete this service");
+      }
+
+      const deletedService = await Service.findByIdAndDelete(serviceId);
+
+      if (!deletedService) {
+        throw new Error("Service not found");
+      }
+
+      return deletedService;
     },
   }
 };
-
-
-
+  
 
 module.exports = resolvers;

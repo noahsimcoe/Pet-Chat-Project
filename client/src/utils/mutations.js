@@ -130,3 +130,33 @@ mutation DeleteReview($reviewId: ID!) {
   }
 }
 `;
+
+export const CREATE_SERVICE = gql`
+  mutation createService($serviceName: String!, $description: String, $userId: ID!) {
+    createService(serviceName: $serviceName, description: $description, userId: $userId) {
+      service {
+        _id
+        name
+        description
+        provider {
+          _id
+          firstName
+        }
+      }
+    }
+  }
+`;
+
+export const DELETE_SERVICE = gql`
+  mutation deleteService($serviceId: ID!, $userId: ID!) {
+    deleteService(serviceId: $serviceId, userId: $userId) {
+      _id
+      name
+      description
+      provider {
+        _id
+        firstName
+      }
+    }
+  }
+`;
