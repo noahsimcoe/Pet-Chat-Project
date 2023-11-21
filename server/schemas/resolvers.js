@@ -61,6 +61,7 @@ const resolvers = {
 
       return { pet: newPet };
     },
+    
     deletePet: async (parent, { petId, userId }, context, info) => {
       if (!context.user) {
         throw AuthenticationError;
@@ -84,6 +85,7 @@ const resolvers = {
 
       return deletedPet;
     },
+
     createReview: async (parent, { userId, service, rating, comment }, context, info) => {
       const newReview = await Review.create({
         user: userId, 

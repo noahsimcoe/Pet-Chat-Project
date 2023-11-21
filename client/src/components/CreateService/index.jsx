@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { CREATE_SERVICE } from '../../utils/mutations';
-import { Card } from 'react-bootstrap';
+import { useMutation } from '@apollo/client'; // Assuming you are using Apollo Client
+import { Card } from 'react-bootstrap'; // Assuming you are using React Bootstrap
+import { CREATE_SERVICE } from '../../utils/mutations'; // Importing your mutation
 import './style.scss';
+
 
 const CreateService = ({ onCreateService }) => {
   const [serviceName, setServiceName] = useState('');
   const [description, setDescription] = useState('');
-  const [image, setImage] = useState('');
   const [showCreateServiceForm, setShowCreateServiceForm] = useState(false);
 
   const [createService, { error, data }] = useMutation(CREATE_SERVICE);
@@ -20,8 +20,7 @@ const CreateService = ({ onCreateService }) => {
         variables: {
           serviceName,
           description,
-          userId: '123', // Replace with the actual user ID or a dynamic value
-          image,
+          userId: '123', 
         },
       });
 
@@ -29,19 +28,13 @@ const CreateService = ({ onCreateService }) => {
 
       setServiceName('');
       setDescription('');
-      setImage('');
       setShowCreateServiceForm(false);
 
-      // Call the callback function passed as a prop to update the parent component state
+     
       onCreateService(data.createService);
     } catch (error) {
       console.error('Error creating service:', error);
     }
-  };
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setImage(file);
   };
 
   return (
@@ -69,15 +62,6 @@ const CreateService = ({ onCreateService }) => {
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-            />
-          </label>
-          <br />
-          <label>
-            Image:
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
             />
           </label>
           <br />
