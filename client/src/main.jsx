@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound.jsx';
+import Contact from './pages/Contact';
 
 import './index.css'
 
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register />
+      },
+      {
+        path: '/contact',
+        element: <Contact />
       }
     ]
   }
