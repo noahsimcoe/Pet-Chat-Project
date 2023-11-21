@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Form, Button } from 'react-bootstrap'; 
 
+import './style.scss';
+
 const CatComponent = () => {
   const [catImageUrl, setCatImageUrl] = useState('');
 
@@ -25,11 +27,16 @@ const CatComponent = () => {
   };
 
   return (
-    <Card>
-      <img id="kittyImage" src={catImageUrl} alt="Random Kitty" />
-      <Button id="nextCatBtn" onClick={btnClick}>
+    <Card id='rando'>
+      <Card.Img id="kittyImage" src={catImageUrl} alt="Random Kitty" />
+      <Card.Body>
+      <Card.Text>
+          Enjoy some random kitties!
+        </Card.Text>
+        <Button id="nextCatBtn" onClick={btnClick}>
         Next Kitty
       </Button>
+      </Card.Body>
     </Card>
   );
 };
