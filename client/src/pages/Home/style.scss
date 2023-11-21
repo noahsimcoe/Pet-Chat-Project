@@ -1,14 +1,17 @@
-#home-page {
-    h1 {
-        margin: 4rem auto;
-        text-align: center;
-    }
+// style.scss
 
-    p {
-        width: 90%;
-        max-width: 1024px;
-        font-size: 1.3rem;
-        line-height: 180%;
-        margin: 2rem auto;
-    }
-}
+// Container styles
+.container {
+    position: relative;
+  }
+  
+  // Button styles
+  #createServiceButton {
+    position: absolute;
+    top: 160px;    // Adjust the top position as needed
+    right: 10px;
+    font-size: 32px;  // Adjust the right position as needed
+  }
+  
+  // Add any additional styles as needed
+  
