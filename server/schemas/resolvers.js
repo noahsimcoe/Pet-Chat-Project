@@ -61,13 +61,27 @@ const resolvers = {
 
       return { pet: newPet };
     },
-    deletePet: async (parent, { petId }, context, info) => {
+    deletePet: async (parent, { petId, userId }, context, info) => {
+      if (!context.user) {
+        throw AuthenticationError;
+      }
+
+      const pet = await Pet.findById(petId);
+
+      if (!pet) {
+        throw new Error("Pet not found");
+      }
+
+      if (pet.owner.toString() !== userId) {
+        throw new Error("User is not authorized to delete this pet");
+      }
+
       const deletedPet = await Pet.findByIdAndDelete(petId);
-  
+
       if (!deletedPet) {
         throw new Error("Pet not found");
       }
-  
+
       return deletedPet;
     },
     createReview: async (parent, { userId, service, rating, comment }, context, info) => {
@@ -80,14 +94,27 @@ const resolvers = {
     
       return { review: newReview };
     },
-    deleteReview: async (parent, { reviewId }, context, info) => {
-      
+    deleteReview: async (parent, { reviewId, userId }, context, info) => {
+      if (!context.user) {
+        throw AuthenticationError;
+      }
+
+      const review = await Review.findById(reviewId);
+
+      if (!review) {
+        throw new Error("Review not found");
+      }
+
+      if (review.user.toString() !== userId) {
+        throw new Error("User is not authorized to delete this review");
+      }
+
       const deletedReview = await Review.findByIdAndDelete(reviewId);
-    
+
       if (!deletedReview) {
         throw new Error("Review not found");
       }
-      
+
       return deletedReview;
     },
     
