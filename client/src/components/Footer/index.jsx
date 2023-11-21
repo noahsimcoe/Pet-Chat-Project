@@ -8,7 +8,6 @@ function Footer() {
   return (
     <div id="footer">
       <h3>petCHAT 2023</h3>
-      <p>
         <div>
         <Link to="https://github.com/Jaxson20"><FontAwesomeIcon icon={faSquareGithub} size="lg" style={{color: "#6E7C7C",}} /></Link>
         </div>
@@ -21,7 +20,6 @@ function Footer() {
         <div>
         <Link to="https://github.com/noahsimcoe" ><FontAwesomeIcon icon={faSquareGithub} size="lg" style={{color: "#6E7C7C",}} /></Link>
         </div>
-      </p>
     </div>
   );
 }
