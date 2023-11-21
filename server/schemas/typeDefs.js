@@ -54,9 +54,9 @@ const typeDefs = `
     signin(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     createPet(name: String!, species: String, breed: String, ownerId: ID!, birthdate: String, image: String, weight: Float, height: Float, vaccinations: Boolean): Pet
-    deletePet(petId: ID!): Pet
+    deletePet(petId: ID!, userId: ID!): Pet
     createReview(userId: ID!, service: String!, rating: Int!, comment: String): Review
-    deleteReview(reviewId: ID!): Review
+    deleteReview(reviewId: ID!, userId: ID!): Review
     createService(serviceId: ID, userId: ID!, serviceName: String!, description: String!, image: String!): Service
     deleteService(serviceId: ID!, userId: ID!): Service
   }
