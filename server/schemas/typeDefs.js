@@ -70,12 +70,8 @@ const typeDefs = `
     createUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     signin(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-<<<<<<< HEAD
     createPet(name: String!, species: String, breed: String, owner: ID!, birthdate: String, image: String, weight: Float, height: Float, vaccinations: Boolean): Pet
-=======
-    createPet(name: String!, species: String, breed: String, ownerId: ID!, birthdate: String, image: String, weight: Float, height: Float, vaccinations: Boolean): Pet
     editPet(input: EditPetInput!): EditPetResponse
->>>>>>> ef73c71a1927b024184cc1c55332f74f77f5bfdc
     deletePet(petId: ID!, userId: ID!): Pet
     createReview(userId: ID!, service: String!, rating: Int!, comment: String): Review
     deleteReview(reviewId: ID!, userId: ID!): Review
