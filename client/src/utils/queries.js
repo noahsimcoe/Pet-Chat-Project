@@ -12,8 +12,10 @@ export const QUERY_USER = gql`
         name
         species
         breed
-        owner
-        birthday
+        owner {
+          lastName
+        }
+        birthdate
         image
         weight
         height
@@ -29,6 +31,32 @@ export const QUERY_PETS = gql`
       _id
       name
       species
+      breed
     }
   }
+`;
+
+export const QUERY_ALL_USERS = gql`
+{
+  users {
+    _id
+    firstName
+    lastName
+    email
+    pets {
+      _id
+      name
+      species
+      breed
+      owner {
+        lastName
+      }
+      birthdate
+      image
+      weight
+      height
+      vaccinations
+    }
+  }
+}
 `;

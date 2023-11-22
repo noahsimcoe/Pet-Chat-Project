@@ -1,17 +1,16 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { CREATE_PET } from '../../utils/mutations';
-import { Card, Form, Button } from 'react-bootstrap'; 
+import { Card, Form, Button } from 'react-bootstrap';
 
 import './style.scss';
 
-
 const CreatePet = () => {
+
     const [formState, setFormStage] = useState({
         name: '',
         species: '',
         breed: '',
-        ownerId: '',
         birthdate: '',
         image: '',
         weight: '',
@@ -33,7 +32,7 @@ const CreatePet = () => {
     const { name, checked } = event.target;
     setFormStage({
       ...formState,
-      [name]: checked, 
+      [name]: checked,
     });
   };
 
@@ -50,13 +49,17 @@ const CreatePet = () => {
 
     try {
       const { data } = await createPet({
-        variables: { ...formState },
+        variables: {
+          ...formState,
+          owner: '655cee8d8ea93e9d6f330ea2',
+       },
       });
 
     } catch (err) {
       console.error(err);
     }
   };
+
 
   return (
     <>

@@ -13,7 +13,6 @@ export const CREATE_USER = gql`
   }
 `;
 
-
 export const LOGIN_MUTATION = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
@@ -41,27 +40,8 @@ export const SIGNIN_MUTATION = gql`
 `;
 
 export const CREATE_PET = gql`
-  mutation createPet(
-    $name: String!
-    $species: String
-    $breed: String
-    $ownerId: ID!
-    $birthdate: String
-    $image: String
-    $weight: Float
-    $height: Float
-    $vaccinations: Boolean
-  ) {
-    createPet(
-      name: $name
-      species: $species
-      breed: $breed
-      ownerId: $ownerId
-      birthdate: $birthdate
-      image: $image
-      weight: $weight
-      height: $height
-      vaccinations: $vaccinations
+  mutation createPet($name: String!, $species: String, $breed: String, $owner: ID!, $birthdate: String, $image: String, $weight: Float, $height: Float, $vaccinations: Boolean) {
+    createPet(name: $name, species: $species, breed: $breed, owner: $owner, birthdate: $birthdate, image: $image, weight: $weight, height: $height, vaccinations: $vaccinations
     ) {
         _id
         name
