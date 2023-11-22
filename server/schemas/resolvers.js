@@ -1,5 +1,5 @@
-const { User, Pet, Review, service} = require('../models');
-const { signToken, AuthenticationError } = require('../utils/auth');
+const { User, Pet, Review, service } = require("../models");
+const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
   Query: {
@@ -7,21 +7,20 @@ const resolvers = {
       if (!context.user) {
         throw AuthenticationError;
       }
-      return await User.findById(context.user._id).populate('pets');
+      return await User.findById(context.user._id).populate("pets");
     },
     pets: async () => {
       const allPets = await Pet.find();
       return allPets;
-    }
+    },
   },
   Mutation: {
-    //create user may need addressing
     createUser: async (parent, { firstName, lastName, email, password }) => {
       const newUser = await User.create({
         firstName,
         lastName,
         email,
-        password
+        password,
       });
       const token = signToken(newUser);
       return { token, user: newUser };
@@ -29,7 +28,7 @@ const resolvers = {
 
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
-      
+
       if (!user) {
         throw AuthenticationError;
       }
@@ -37,21 +36,35 @@ const resolvers = {
       const correctPw = await user.verifyPassword(password);
 
       if (!correctPw) {
-        
         throw AuthenticationError;
       }
 
       const token = signToken(user);
-  
+
       return { token };
     },
 
-    createPet: async (parent, { name, species, breed, ownerId, birthdate, image, weight, height, vaccinations }, context, info) => {
+    createPet: async (
+      parent,
+      {
+        name,
+        species,
+        breed,
+        ownerId,
+        birthdate,
+        image,
+        weight,
+        height,
+        vaccinations,
+      },
+      context,
+      info
+    ) => {
       const newPet = await Pet.create({
         name,
         species,
         breed,
-        owner: ownerId, // ID of User
+        owner: ownerId,
         birthdate,
         image,
         weight,
@@ -61,7 +74,43 @@ const resolvers = {
 
       return { pet: newPet };
     },
-    
+    editPet: async (
+      parent,
+      {
+        petID,
+        name,
+        species,
+        breed,
+        ownerId,
+        birthdate,
+        image,
+        weight,
+        height,
+        vaccinations,
+      },
+      context,
+      info
+    ) => {
+      const existingPet = await Pet.findById(petId);
+
+      if (!existingPet) {
+        throw new Error("Sorry, pet not found.");
+      }
+
+      existingPet.name = name || existingPet.name;
+      existingPet.species = species || existingPet.species;
+      existingPet.breed = breed || existingPet.breed;
+      existingPet.birthdate = birthdate || existingPet.birthdate;
+      existingPet.image = image || existingPet.image;
+      existingPet.weight = weight || existingPet.weight;
+      existingPet.height = height || existingPet.height;
+      existingPet.vaccinations = vaccinations || existingPet.vaccinations;
+
+      await existingPet.save();
+
+      return { pet: existingPet };
+    },
+
     deletePet: async (parent, { petId, userId }, context, info) => {
       if (!context.user) {
         throw AuthenticationError;
@@ -86,14 +135,19 @@ const resolvers = {
       return deletedPet;
     },
 
-    createReview: async (parent, { userId, service, rating, comment }, context, info) => {
+    createReview: async (
+      parent,
+      { userId, service, rating, comment },
+      context,
+      info
+    ) => {
       const newReview = await Review.create({
-        user: userId, 
+        user: userId,
         service,
         rating,
         comment,
       });
-    
+
       return { review: newReview };
     },
     deleteReview: async (parent, { reviewId, userId }, context, info) => {
@@ -119,8 +173,13 @@ const resolvers = {
 
       return deletedReview;
     },
-    
-    createService: async (parent, { serviceName, description, userId }, context, info) => {
+
+    createService: async (
+      parent,
+      { serviceName, description, userId },
+      context,
+      info
+    ) => {
       const newService = await Service.create({
         name: serviceName,
         description,
@@ -154,8 +213,7 @@ const resolvers = {
 
       return deletedService;
     },
-  }
+  },
 };
-  
 
 module.exports = resolvers;
