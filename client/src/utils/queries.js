@@ -36,6 +36,19 @@ export const QUERY_PETS = gql`
   }
 `;
 
+export const QUERY_SERVICE =gql`
+{
+  Service {
+    _id
+    name
+    description
+    provider {
+      _id
+      firstName
+    }
+  }
+}
+`;
 export const QUERY_ALL_USERS = gql`
 {
   users {

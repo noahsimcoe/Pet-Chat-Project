@@ -166,22 +166,22 @@ const resolvers = {
 
       return deletedReview;
     },
-
-    createService: async (
-      parent,
-      { serviceName, description, userId },
-      context,
-      info
-    ) => {
+    
+    createService: async (parent, { serviceName, description, userId }, context, info) => {
+      try {
       const newService = await Service.create({
         name: serviceName,
         description,
         provider: userId,
-        image,
       });
 
-      return { service: newService };
-    },
+      console.log('service created successfully', newService)
+      return { Service: newService };
+    } catch (error) {
+      console.error('Error creating service:', error);
+      throw error;
+    } 
+  },
 
     deleteService: async (parent, { serviceId, userId }, context, info) => {
       if (!context.user) {
