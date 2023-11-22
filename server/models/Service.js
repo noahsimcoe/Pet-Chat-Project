@@ -19,9 +19,6 @@ const serviceSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Review',
   }],
-  image: {
-    type: String, 
-  },
 }, { timestamps: true });
 
 const Service = mongoose.model('Service', serviceSchema);

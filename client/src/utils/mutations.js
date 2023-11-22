@@ -134,14 +134,12 @@ mutation DeleteReview($reviewId: ID!) {
 export const CREATE_SERVICE = gql`
   mutation createService($serviceName: String!, $description: String, $userId: ID!) {
     createService(serviceName: $serviceName, description: $description, userId: $userId) {
-      service {
-        _id
+      _id
         name
         description
         provider {
           _id
           firstName
-        }
       }
     }
   }

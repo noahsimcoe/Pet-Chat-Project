@@ -1,4 +1,4 @@
-const { User, Pet, Review, service} = require('../models');
+const { User, Pet, Review, Service} = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -121,15 +121,20 @@ const resolvers = {
     },
     
     createService: async (parent, { serviceName, description, userId }, context, info) => {
+      try {
       const newService = await Service.create({
         name: serviceName,
         description,
         provider: userId,
-        image,
       });
 
-      return { service: newService };
-    },
+      console.log('service created successfully', newService)
+      return { Service: newService };
+    } catch (error) {
+      console.error('Error creating service:', error);
+      throw error;
+    } 
+  },
 
     deleteService: async (parent, { serviceId, userId }, context, info) => {
       if (!context.user) {
