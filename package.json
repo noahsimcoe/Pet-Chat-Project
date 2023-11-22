@@ -17,6 +17,7 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
+    "jwt-decode": "^4.0.0",
     "react-icons-kit": "^2.0.0"
   }
 }
