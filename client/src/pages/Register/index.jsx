@@ -22,9 +22,6 @@ export default function Register() {
     // helps ensure all images have different names
     const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
 
-    //console.log(imageRef);
-    //console.log(imageRefLink);
-
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
       // confirmation that image was uploaded
       // alert("Image Uploaded");
@@ -66,7 +63,7 @@ export default function Register() {
           <button onClick={uploadImage}>Upload Pet Picture</button>
         </div>
 
-        <CreatePet />
+        < CreatePet />
 
         <div class="image-container">
           {imageList.map((url) => {
