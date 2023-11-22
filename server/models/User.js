@@ -27,7 +27,7 @@ const userSchema = new Schema({
   pets: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Pet' }],
   reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
   services: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Service' }],
-}, { timestamps: true 
+}, { timestamps: true
 });
 
 
