@@ -1,5 +1,5 @@
-const { User, Pet, Review, service } = require("../models");
-const { signToken, AuthenticationError } = require("../utils/auth");
+const { User, Pet, Review, Service} = require('../models');
+const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   Query: {
@@ -10,9 +10,19 @@ const resolvers = {
       return await User.findById(context.user._id).populate("pets");
     },
     pets: async () => {
-      const allPets = await Pet.find();
-      return allPets;
+      try {
+        const allPets = await Pet.find(); // fetch ALL pets
+        return allPets;
+      } catch (error) {
+        console.error(error);
+        throw new Error('failed to fetch pets.');
+      }
     },
+
+    users: async () => {
+      const allUsers = await User.find();
+      return allUsers;
+    }
   },
   Mutation: {
     createUser: async (parent, { firstName, lastName, email, password }) => {
@@ -44,35 +54,18 @@ const resolvers = {
       return { token };
     },
 
-    createPet: async (
-      parent,
-      {
+    createPet: async (parent, { name, species, breed, owner, birthdate, image, weight, height, vaccinations }) => {
+      return await Pet.create({
         name,
         species,
         breed,
-        ownerId,
-        birthdate,
-        image,
-        weight,
-        height,
-        vaccinations,
-      },
-      context,
-      info
-    ) => {
-      const newPet = await Pet.create({
-        name,
-        species,
-        breed,
-        owner: ownerId,
+        owner,
         birthdate,
         image,
         weight,
         height,
         vaccinations,
       });
-
-      return { pet: newPet };
     },
     editPet: async (
       parent,

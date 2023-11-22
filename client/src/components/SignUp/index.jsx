@@ -103,7 +103,7 @@ const Signup = () => {
           </Form.Group>
 
           <Button
-            className="btn-block  submit-btn" 
+            className="btn-block  submit-btn"
             style={{ cursor: 'pointer' }}
             type="submit"
           >
