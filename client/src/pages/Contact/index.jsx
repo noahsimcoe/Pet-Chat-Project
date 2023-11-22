@@ -1,6 +1,8 @@
 import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 
+import "./style.scss";
+
 
 const Contact = () => {
 
@@ -76,39 +78,41 @@ const handleChange = (event) => {
 };
 
 return (
-  <div>
-    <h1>Contact Me</h1>
+  <div className='contact-page'>
+    <h1 className='contact-header'>Contact Me</h1>
 
     <div className="container">
-      <div className="row justify-content-center">
+      <div>
         <div className="col-md-6">
 
           <form className="contact-form" onSubmit={sendEmail}>
-            <div className="mb-3">
-              <label htmlFor="user-name">Name</label>
-              <input
-              type="text"
-              className="user-name form-control"
-              name="from_name"
-              value={name}
-              onChange={handleChange}
-              required />
+            <div className="row">
+              <div className='input-group'>
+                <label htmlFor="user-name">Your name</label>
+                <input
+                type="text"
+                className="user-name form-control"
+                name="from_name"
+                value={name}
+                onChange={handleChange}
+                required />
+              </div>
+
+              <div className='input-group'>
+                <label htmlFor="user-email" className="user-email" name="user-email">
+                  Email
+                </label>
+                <input
+                type="text"
+                className="user-email form-control"
+                name="user_email"
+                value={email}
+                onChange={handleChange}
+                required />
+              </div>
             </div>
 
-            <div>
-              <label htmlFor="user-email" className="user-email" name="user-email">
-                Email
-              </label>
-              <input
-              type="text"
-              className="user-email form-control"
-              name="user_email"
-              value={email}
-              onChange={handleChange}
-              required />
-            </div>
-
-            <div className="contact-form">
+            <div className='input-group'>
               <label htmlFor="message" className="user-message">
                 Message
               </label>
@@ -122,7 +126,7 @@ return (
 
             <div>
               <input
-              type="submit" value="send" className="btn btn-primary" />
+              type="submit" value="Send" className="btn btn-primary" />
             </div>
           </form>
           
@@ -134,36 +138,3 @@ return (
 };
 
 export default Contact;
-
-// export const Contact = () => {
-
-//     const serviceId = import.meta.env.SERVICE_ID;
-//   const formId = import.meta.env.FORM_ID;
-//   const publicKey = import.meta.env.PUBLIC_ID;
-//   console.log(publicKey, serviceId);
-
-//   const form = useRef();
-
-//   const sendEmail = (e) => {
-//     e.preventDefault();
-
-//     emailjs.sendForm( serviceId, formId, form.current, publicKey)
-//       .then((result) => {
-//           console.log(result.text);
-//       }, (error) => {
-//           console.log(error.text);
-//       });
-//   };
-
-//   return (
-//     <form ref={form} onSubmit={sendEmail}>
-//       <label>Name</label>
-//       <input type="text" name="from_name" />
-//       <label>Email</label>
-//       <input type="email" name="user_email" />
-//       <label>Message</label>
-//       <textarea name="message" />
-//       <input type="submit" value="Send" />
-//     </form>
-//   );
-// };
