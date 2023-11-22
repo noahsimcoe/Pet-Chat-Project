@@ -8,18 +8,30 @@ function Footer() {
   return (
     <div id="footer">
       <h3>petCHAT 2023</h3>
+      {/* <div id="link-box">
+        <Link to="https://github.com/Jaxson20" target="_blank"><FontAwesomeIcon icon={faSquareGithub} size="lg" style={{color: "#6E7C7C",}} /></Link>
+        <Link to="https://github.com/britaing" target="_blank"><FontAwesomeIcon icon={faSquareGithub} size="lg" style={{color: "#6E7C7C",}} /></Link>
+        <Link to="https://github.com/elchinatalpf" target="_blank"><FontAwesomeIcon icon={faSquareGithub} size="lg" style={{color: "#6E7C7C",}} /></Link>
+        <Link to="https://github.com/noahsimcoe" target="_blank"><FontAwesomeIcon icon={faSquareGithub} size="lg" style={{color: "#6E7C7C",}} /></Link>
+      </div> */}
+      <div id="link-box">
         <div>
-        <Link to="https://github.com/Jaxson20"><FontAwesomeIcon icon={faSquareGithub} size="lg" style={{color: "#6E7C7C",}} /></Link>
+          <Link to="https://github.com/Jaxson20" target="_blank"><FontAwesomeIcon icon={faSquareGithub} size="lg" style={{color: "#6E7C7C",}} /></Link>
+          <h5>Jaxson</h5>
         </div>
         <div>
-        <Link to="https://github.com/britaing"><FontAwesomeIcon icon={faSquareGithub} size="lg" style={{color: "#6E7C7C",}} /></Link>
+          <Link to="https://github.com/britaing" target="_blank"><FontAwesomeIcon icon={faSquareGithub} size="lg" style={{color: "#6E7C7C",}} /></Link>
+          <h5>Britain</h5>
         </div>
         <div>
-        <Link to="https://github.com/elchinatalpf"><FontAwesomeIcon icon={faSquareGithub} size="lg" style={{color: "#6E7C7C",}} /></Link>
+          <Link to="https://github.com/elchinatalpf" target="_blank"><FontAwesomeIcon icon={faSquareGithub} size="lg" style={{color: "#6E7C7C",}} /></Link>
+          <h5>Mr. Ghor</h5>
         </div>
         <div>
-        <Link to="https://github.com/noahsimcoe" ><FontAwesomeIcon icon={faSquareGithub} size="lg" style={{color: "#6E7C7C",}} /></Link>
+          <Link to="https://github.com/noahsimcoe" target="_blank"><FontAwesomeIcon icon={faSquareGithub} size="lg" style={{color: "#6E7C7C",}} /></Link>
+          <h5>Noah</h5>
         </div>
+      </div>
     </div>
   );
 }
