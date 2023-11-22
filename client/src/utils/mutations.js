@@ -79,6 +79,47 @@ export const CREATE_PET = gql`
       }
   }
 `;
+
+export const EDIT_PET = gql`
+  mutation editPet(
+    $petId: ID!
+    $name: String
+    $species: String
+    $breed: String
+    $birthdate: String
+    $image: String
+    $weight: Float
+    $height: Float
+    $vaccinations: Boolean
+  ) {
+    editPet(
+      petId: $petId
+      name: $name
+      species: $species
+      breed: $breed
+      birthdate: $birthdate
+      image: $image
+      weight: $weight
+      height: $height
+      vaccinations: $vaccinations
+    ) {
+      _id
+      name
+      species
+      breed
+      owner {
+        _id
+        firstName
+      }
+      birthdate
+      image
+      weight
+      height
+      vaccinations
+    }
+  }
+`;
+
 export const DELETE_PET = gql`
   mutation deletePet($petId: ID!) {
     deletePet(petId: $petId) {
