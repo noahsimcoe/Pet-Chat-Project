@@ -11,7 +11,7 @@ const resolvers = {
     },
     pets: async () => {
       try {
-        const allPets = await Pet.find(); // fetch ALL pets
+        const allPets = await Pet.find().populate("owner"); // fetch ALL pets
         return allPets;
       } catch (error) {
         console.error(error);
@@ -54,19 +54,22 @@ const resolvers = {
       return { token };
     },
 
-    createPet: async (parent, { name, species, breed, owner, birthdate, image, weight, height, vaccinations }) => {
-      return await Pet.create({
+    createPet: async (parent, { name, species, breed, owner, birthdate, image, weight, height, vaccinations }, context) => {
+      const newPet = await Pet.create({
         name,
         species,
         breed,
-        owner,
+        owner: context.user._id,
         birthdate,
         image,
         weight,
         height,
         vaccinations,
       });
+      const user = await User.findOneAndUpdate({_id: context.user._id}, {$push: {pets: newPet._id}}, {new: true})
+      return newPet;
     },
+
     editPet: async (
       parent,
       {
