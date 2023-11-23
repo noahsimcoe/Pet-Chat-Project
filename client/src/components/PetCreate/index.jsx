@@ -2,7 +2,10 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { CREATE_PET } from '../../utils/mutations';
 import { Card, Form, Button } from 'react-bootstrap';
-
+import { storage } from '../../firebase';
+import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
+import { v4 } from 'uuid';
+import { useEffect } from 'react';
 import './style.scss';
 
 const CreatePet = () => {
@@ -12,7 +15,6 @@ const CreatePet = () => {
         species: '',
         breed: '',
         birthdate: '',
-        image: '',
         weight: '',
         height: '',
         vaccinations: '',
@@ -46,12 +48,13 @@ const CreatePet = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    uploadImage();
 
     try {
       const { data } = await createPet({
         variables: {
           ...formState,
-          owner: '655cee8d8ea93e9d6f330ea2',
+          image: newImageUrl,
        },
       });
 
@@ -60,11 +63,46 @@ const CreatePet = () => {
     }
   };
 
+  const [imageUpload, setImageUpload] = useState(null);
+  const [imageList, setImageList] = useState([]);
+  const [newImageUrl, setNewImageUrl] = useState('');
+
+  const imageListRef = ref(storage, "images/");
+
+  const uploadImage = () => {
+    // ends function if you didn't select an image
+    if (imageUpload == null) return
+    // helps ensure all images have different names
+    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+
+    uploadBytes(imageRef, imageUpload).then((snapshot) => {
+      // confirmation that image was uploaded
+      // alert("Image Uploaded");
+      getDownloadURL(snapshot.ref).then((url) => {
+        setImageList((prev) => [...prev, url])
+        setNewImageUrl(url);
+      });
+    });
+  };
+
+  // creating a new array of the newest images
+  useEffect(() => {
+    listAll(imageListRef).then((response) => {
+      //console.log(response);
+      response.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          // setting new list of images to the items from the cloud storage
+          setImageList((prev) => [...prev, url]);
+        })
+      })
+    })
+  }, [])
 
   return (
     <>
     <Card className='createPetCard'>
     <main className="flex-row justify-center mb-4">
+      <h2>Register a Pet Below!</h2>
       <div className="col-12 col-lg-10">
         <div className="card">
           <div className="card-body">
@@ -96,7 +134,7 @@ const CreatePet = () => {
                 />
                 <input
                   className="form-input"
-                  placeholder="pet birthday"
+                  placeholder="birthday month"
                   name="birthdate"
                   type="text"
                   value={formState.birthdate}
@@ -104,7 +142,7 @@ const CreatePet = () => {
                 />
                 <input
                   className="form-input"
-                  placeholder="pet weight"
+                  placeholder="pet weight (lbs)"
                   name="weight"
                   type="number"
                   step="0.5"
@@ -113,10 +151,10 @@ const CreatePet = () => {
                 />
                 <input
                     className="form-input"
-                    placeholder="pet height"
+                    placeholder="pet height (inches)"
                     name="height"
-                    type="number" 
-                    step="0.5" 
+                    type="number"
+                    step="0.5"
                     value={formState.height}
                     onChange={handleChangeNum}
                     />
@@ -126,11 +164,22 @@ const CreatePet = () => {
                     className="form-input"
                     placeholder="pet vaccinations"
                     name="vaccinations"
-                    type="checkbox" 
-                    checked={formState.vaccinations} 
-                    onChange={handleChangeCheckbox} 
+                    type="checkbox"
+                    checked={formState.vaccinations}
+                    onChange={handleChangeCheckbox}
                 />
                 </div>
+                <div id="register-page">
+                  <div class="add-picture-section">
+                    <input
+                      type="file"
+                      onChange={(event) => {
+                        setImageUpload(event.target.files[0])
+                      }}
+                    />
+                    {/* <button onClick={uploadImage}>Upload Pet Picture</button> */}
+                  </div>
+                  </div>
                 <button
                   className="btn btn-block btn-info submit-btn"
                   type="submit"
