@@ -6,25 +6,30 @@ import { storage } from '../../firebase';
 import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
 import { v4 } from 'uuid';
 import { useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './style.scss';
+
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const CreatePet = () => {
 
-    const [formState, setFormStage] = useState({
+    const [formState, setFormState] = useState({
         name: '',
         species: '',
         breed: '',
-        birthdate: '',
         weight: '',
-        height: '',
         vaccinations: '',
     });
+
+    const [startDate, setStartDate] = useState(new Date());
 
     const [createPet, {error, data}] =useMutation(CREATE_PET);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormStage({
+    setFormState({
       ...formState,
       [name]: value,
     });
@@ -32,7 +37,7 @@ const CreatePet = () => {
 
   const handleChangeCheckbox = (event) => {
     const { name, checked } = event.target;
-    setFormStage({
+    setFormState({
       ...formState,
       [name]: checked,
     });
@@ -40,7 +45,7 @@ const CreatePet = () => {
 
   const handleChangeNum = (event) => {
     const { name, value } = event.target;
-    setFormStage({
+    setFormState({
       ...formState,
       [name]: parseFloat(value),
     });
@@ -57,9 +62,26 @@ const CreatePet = () => {
         variables: {
           ...formState,
           image: newImageUrl,
+          birthdate: startDate,
         },
       });
 
+      setFormState({
+        name: '',
+        species: '',
+        breed: '',
+        birthdate: '',
+        weight: '',
+        vaccinations: '',
+      });
+
+      setStartDate(new Date());
+
+      // notification that appears
+      toast.success("Your pet has been created!", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 2250, // duration of notification
+      });
       // Rest of your code that relies on the image upload being completed
     } catch (err) {
       console.error(err);
@@ -74,14 +96,11 @@ const CreatePet = () => {
 
   const uploadImage = () => {
     // ends function if you didn't select an image
-    // console.log("test");
     if (imageUpload == null) return
     // helps ensure all images have different names
     const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
 
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
-      // confirmation that image was uploaded
-      // alert("Image Uploaded");
       getDownloadURL(snapshot.ref).then((url) => {
         setImageList((prev) => [...prev, url])
         setNewImageUrl(url);
@@ -92,7 +111,6 @@ const CreatePet = () => {
   // creating a new array of the newest images
   useEffect(() => {
     listAll(imageListRef).then((response) => {
-      //console.log(response);
       response.items.forEach((item) => {
         getDownloadURL(item).then((url) => {
           // setting new list of images to the items from the cloud storage
@@ -114,7 +132,7 @@ const CreatePet = () => {
               <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
-                  placeholder="pet name"
+                  placeholder="Name"
                   name="name"
                   type="text"
                   value={formState.name}
@@ -122,7 +140,7 @@ const CreatePet = () => {
                 />
                 <input
                   className="form-input"
-                  placeholder="pet species"
+                  placeholder="Species"
                   name="species"
                   type="text"
                   value={formState.species}
@@ -130,7 +148,7 @@ const CreatePet = () => {
                 />
                 <input
                   className="form-input"
-                  placeholder="pet breed"
+                  placeholder="Breed/Type"
                   name="breed"
                   type="text"
                   value={formState.breed}
@@ -138,35 +156,23 @@ const CreatePet = () => {
                 />
                 <input
                   className="form-input"
-                  placeholder="birthday month"
-                  name="birthdate"
-                  type="text"
-                  value={formState.birthdate}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="pet weight (lbs)"
+                  placeholder="Weight (lbs)"
                   name="weight"
                   type="number"
                   step="0.5"
                   value={formState.weight}
                   onChange={handleChangeNum}
                 />
+                <div class="form-group">
+                  <label for="html" class="form-label">Birthday</label>
+                  <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} className="custom-datepicker"/>
+                </div>
+                <div class="vaxx">
+                <label for="vaccinations" class="form-label">Vaccinated?</label>
                 <input
-                    className="form-input"
-                    placeholder="pet height (inches)"
-                    name="height"
-                    type="number"
-                    step="0.5"
-                    value={formState.height}
-                    onChange={handleChangeNum}
-                    />
-                <div>
-                <label>Vaccinated?</label>
-                <input
-                    className="form-input"
-                    placeholder="pet vaccinations"
+                    id="vaccinations"
+                    className="custom-checkbox"
+                    placeholder="Vaccinationed?"
                     name="vaccinations"
                     type="checkbox"
                     checked={formState.vaccinations}
@@ -175,23 +181,32 @@ const CreatePet = () => {
                 </div>
                 <div id="register-page">
                   <div class="add-picture-section">
-                    <input
-                      type="file"
-                      onChange={(event) => {
-                        setImageUpload(event.target.files[0])
-                      }}
-                    />
-                    {/* <button onClick={uploadImage}>Upload Pet Picture</button> */}
+                    <label for="file-upload" class="form-label">Upload Picture</label>
+                    <div class="center">
+                      <input
+                        id="file-upload"
+                        type="file"
+                        onChange={(event) => {
+                          setImageUpload(event.target.files[0])
+                        }}
+                        className="custom-file-input"
+                      />
+                    </div>
                   </div>
-                  </div>
+                </div>
                 <button
-                  className="btn btn-block btn-info submit-btn"
-                  type="submit"
-                >
+                  class="submit-btn"
+                  type="submit">
                   Submit
                 </button>
               </form>
             }
+            <div>
+                <ToastContainer
+                  theme="colored"
+                  pauseOnHover
+                />
+              </div>
 
             {error && (
               <div className="my-3 p-3 bg-danger text-white">
