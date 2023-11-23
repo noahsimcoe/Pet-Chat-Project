@@ -55,7 +55,6 @@ const CreatePet = () => {
     event.preventDefault();
 
     try {
-      // Wait for the uploadImage() function to finish before proceeding
       await uploadImage();
 
       const { data } = await createPet({
@@ -77,10 +76,9 @@ const CreatePet = () => {
 
       setStartDate(new Date());
 
-      // notification that appears
       toast.success("Your pet has been created!", {
         position: toast.POSITION.TOP_CENTER,
-        autoClose: 2250, // duration of notification
+        autoClose: 2250,
       });
       // Rest of your code that relies on the image upload being completed
     } catch (err) {
@@ -163,12 +161,12 @@ const CreatePet = () => {
                   value={formState.weight}
                   onChange={handleChangeNum}
                 />
-                <div class="form-group">
-                  <label for="html" class="form-label">Birthday</label>
+                <div className="form-group">
+                  <label htmlFor="html" className="form-label">Birthday</label>
                   <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} className="custom-datepicker"/>
                 </div>
-                <div class="vaxx">
-                <label for="vaccinations" class="form-label">Vaccinated?</label>
+                <div className="vaxx">
+                <label htmlFor="vaccinations" className="form-label">Vaccinated?</label>
                 <input
                     id="vaccinations"
                     className="custom-checkbox"
@@ -180,9 +178,9 @@ const CreatePet = () => {
                 />
                 </div>
                 <div id="register-page">
-                  <div class="add-picture-section">
-                    <label for="file-upload" class="form-label">Upload Picture</label>
-                    <div class="center">
+                  <div className="add-picture-section">
+                    <label htmlFor="file-upload" className="form-label">Upload Picture</label>
+                    <div className="center">
                       <input
                         id="file-upload"
                         type="file"
@@ -195,7 +193,7 @@ const CreatePet = () => {
                   </div>
                 </div>
                 <button
-                  class="submit-btn"
+                  className="submit-btn"
                   type="submit">
                   Submit
                 </button>
