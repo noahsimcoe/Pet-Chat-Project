@@ -63,6 +63,7 @@ const typeDefs = `
   type Query {
     user: User
     pets: Pet
+    services: [Service]
     users: User
   }
 

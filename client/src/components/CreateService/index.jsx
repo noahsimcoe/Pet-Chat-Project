@@ -1,82 +1,3 @@
-// import React, { useState } from 'react';
-// import { useMutation } from '@apollo/client'; 
-// import { Card } from 'react-bootstrap'; 
-// import { CREATE_SERVICE } from '../../utils/mutations'; 
-// import './style.scss';
-
-
-// const CreateService = ({ onCreateService }) => {
-//   const [serviceName, setServiceName] = useState('');
-//   const [description, setDescription] = useState('');
-//   const [showCreateServiceForm, setShowCreateServiceForm] = useState(false);
-
-//   const [createService, { error, data }] = useMutation(CREATE_SERVICE);
-
-//   const handleCreateService = async (e) => {
-//     e.preventDefault();
-
-//     try {
-//       const { data } = await createService({
-//         variables: {
-//           serviceName,
-//           description,
-//           userId: '123', 
-//         },
-//       });
-
-//       console.log('Service created:', data.createService);
-
-//       setServiceName('');
-//       setDescription('');
-//       setShowCreateServiceForm(false);
-
-     
-//       onCreateService(data.createService);
-//     } catch (error) {
-//       console.error('Error creating service:', error);
-//     }
-//   };
-
-//   return (
-//     <Card className="createServiceCard">
-//       <button
-//         id="createServiceButton"
-//         onClick={() => setShowCreateServiceForm(!showCreateServiceForm)}
-//       >
-//         {showCreateServiceForm ? 'Cancel' : 'Create Service'}
-//       </button>
-
-//       {showCreateServiceForm && (
-//         <form id="createServiceForm" onSubmit={handleCreateService}>
-//           <label>
-//             Service Name:
-//             <input
-//               type="text"
-//               value={serviceName}
-//               onChange={(e) => setServiceName(e.target.value)}
-//             />
-//           </label>
-//           <br />
-//           <label>
-//             Description:
-//             <textarea
-//               value={description}
-//               onChange={(e) => setDescription(e.target.value)}
-//             />
-//           </label>
-//           <br />
-//           <button type="submit">Create Service</button>
-//         </form>
-//       )}
-//     </Card>
-//   );
-// };
-
-// export default CreateService;
-
-// Import necessary dependencies
-
-
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { CREATE_SERVICE } from '../../utils/mutations';
@@ -136,13 +57,15 @@ const CreateService = () => {
         },
       });
 
-      
+      console.log('Service created:', data.createService);
+     
+     
       setFormState({
         serviceName: '',
         description: '',
       });
 
-      console.log('Service created:', data.createService);
+      createService(data.createService);
 
      
     } catch (err) {
@@ -156,30 +79,31 @@ const CreateService = () => {
         <div className="col-12 col-lg-10">
           <div className="card">
             <div className="card-body">
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Service Name"
-                  name="serviceName"
-                  type="text"
-                  value={formState.serviceName}
-                  onChange={handleChange}
-                />
-                <textarea
-                  className="form-input"
-                  placeholder="Description"
-                  name="description"
-                  value={formState.description}
-                  onChange={handleChange}
-                />
-                <button
-                  className="btn btn-block btn-info submit-btn"
-                  type="submit"
-                >
-                  Create Service
-                </button>
-              </form>
-
+              <div className="box-container"> {/* Container for grouping elements */}
+                <form onSubmit={handleFormSubmit}>
+                  <input
+                    className="form-input"
+                    placeholder="Service Name"
+                    name="serviceName"
+                    type="text"
+                    value={formState.serviceName}
+                    onChange={handleChange}
+                  />
+                  <textarea id='Description'
+                    className="form-input"
+                    placeholder="Description"
+                    name="description"
+                    value={formState.description}
+                    onChange={handleChange}
+                  />
+                  <button id='Button'
+                    className="btn btn-block btn-info submit-btn"
+                    type="submit"
+                  >
+                    Create Service
+                  </button>
+                </form>
+              </div>
               {error && (
                 <div className="my-3 p-3 bg-danger text-white">
                   {error.message}

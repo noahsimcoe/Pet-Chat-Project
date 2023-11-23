@@ -18,6 +18,9 @@ const resolvers = {
         throw new Error('failed to fetch pets.');
       }
     },
+    services: async () => {
+      return Service.find()
+    },
 
     users: async () => {
       const allUsers = await User.find();

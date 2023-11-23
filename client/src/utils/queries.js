@@ -38,7 +38,7 @@ export const QUERY_PETS = gql`
 
 export const QUERY_SERVICE =gql`
 {
-  Service {
+  services {
     _id
     name
     description

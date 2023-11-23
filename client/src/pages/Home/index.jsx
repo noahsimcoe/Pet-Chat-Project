@@ -1,33 +1,45 @@
-import React, { useState }  from 'react';
+import React, { useState, useEffect }  from 'react';
 import CreateService from '../../components/CreateService';
 import CatComponent from  '../../components/RandomCat';
 import './style.scss';
+import { QUERY_SERVICE } from '../../utils/queries';
+import { useQuery } from '@apollo/client';
 
 export default function HomePage() {
   const [services, setServices] = useState([]); 
+const {loading, data, refetch} = useQuery(QUERY_SERVICE )
+useEffect(() =>{
+data && setServices(data.services)
 
+}, [data])
+  
 
-  const addService = (newService) => {
-    setServices((prevServices) => [...prevServices, newService]);
+const addService = (newService) => {
+    setServices((prevServices) => {
+      const updatedServices = [...prevServices, newService];
+      console.log('Updated services array:', updatedServices);
+      return updatedServices;
+    }); 
+    refetch()
   };
+  
 
   return (
     <div className="home-page">
-      <h1>Home Page</h1>
-      <CatComponent />
-      <CreateService onCreateService={addService} />
+    <CatComponent />
+    <CreateService createService={addService} />
 
-      <div className="service-list">
-        <h2>Services</h2>
-        {services.map((service, index) => (
-          <div key={index} className="service-card">
-            <h3>{service.title}</h3>
-            <p>{service.description}</p>
-          </div>
-        ))}
-      </div>
+    <div className="service-list">
+      {services && services.map((service, index) => (
+        
+      <div key={index} className="service-card">
+          <h3>{service.name}</h3>
+          <p>{service.description}</p>
+        </div>
+      ))}
     </div>
-  );
+  </div>
+);
 }
 
 
