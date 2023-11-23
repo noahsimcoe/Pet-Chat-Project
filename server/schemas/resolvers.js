@@ -175,7 +175,7 @@ const resolvers = {
       const newService = await Service.create({
         name: serviceName,
         description,
-        provider: userId,
+        provider: context.user._id,
       });
 
       console.log('service created successfully', newService)

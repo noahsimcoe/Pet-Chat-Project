@@ -75,7 +75,7 @@ const typeDefs = `
     deletePet(petId: ID!, userId: ID!): Pet
     createReview(userId: ID!, service: String!, rating: Int!, comment: String): Review
     deleteReview(reviewId: ID!, userId: ID!): Review
-    createService(serviceId: ID, userId: ID!, serviceName: String!, description: String!): Service
+    createService(serviceId: ID, serviceName: String!, description: String!): Service
     deleteService(serviceId: ID!, userId: ID!): Service
   }
 `;
