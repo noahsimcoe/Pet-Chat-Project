@@ -40,8 +40,8 @@ export const SIGNIN_MUTATION = gql`
 `;
 
 export const CREATE_PET = gql`
-  mutation createPet($name: String!, $species: String, $breed: String, $owner: ID!, $birthdate: String, $image: String, $weight: Float, $height: Float, $vaccinations: Boolean) {
-    createPet(name: $name, species: $species, breed: $breed, owner: $owner, birthdate: $birthdate, image: $image, weight: $weight, height: $height, vaccinations: $vaccinations
+  mutation createPet($name: String!, $species: String, $breed: String, $birthdate: String, $image: String, $weight: Float, $height: Float, $vaccinations: Boolean) {
+    createPet(name: $name, species: $species, breed: $breed, birthdate: $birthdate, image: $image, weight: $weight, height: $height, vaccinations: $vaccinations
     ) {
         _id
         name
@@ -49,7 +49,6 @@ export const CREATE_PET = gql`
         breed
         owner {
           _id
-          firstName
         }
         birthdate
         image
