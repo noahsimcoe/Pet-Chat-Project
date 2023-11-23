@@ -48,16 +48,19 @@ const CreatePet = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    uploadImage();
 
     try {
+      // Wait for the uploadImage() function to finish before proceeding
+      await uploadImage();
+
       const { data } = await createPet({
         variables: {
           ...formState,
           image: newImageUrl,
-       },
+        },
       });
 
+      // Rest of your code that relies on the image upload being completed
     } catch (err) {
       console.error(err);
     }
@@ -71,6 +74,7 @@ const CreatePet = () => {
 
   const uploadImage = () => {
     // ends function if you didn't select an image
+    // console.log("test");
     if (imageUpload == null) return
     // helps ensure all images have different names
     const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
