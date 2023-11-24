@@ -55,6 +55,7 @@ const typeDefs = `
     reviews: [Review]
   }
 
+
   type Auth {
     token: ID
     user: User
