@@ -27,38 +27,40 @@
     .input-group {
       margin-bottom: 30px;
       position: relative;
-    }
 
-    label {
-      height: 100%;
-      position: absolute;
-      left: 0;
-      top: 0;
-      padding: 10px;
-      color: #090909;
-      cursor: text;
-      transition: 0.2s;
-      pointer-events: none;
-    }
-
-    input,
-    textarea {
-      width: 100%;
-      padding: 10px;
-      outline: 0;
-      border: 1px solid #fff;
-      color: #fff;
-      background: transparent;
-      font-size: 15px;
-      margin-bottom: 15px;
-      border-radius: 5px;
-      
-      &:focus + label,
-      &:valid + label {
-        top: -35px;
-        font-size: 14px;
+      label {
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 10px;
+        color: #090909;
+        cursor: text;
+        transition: 0.2s;
+        pointer-events: none;
+      }
+  
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        outline: 0;
+        border: 1px solid #fff;
+        color: #fff;
+        background: transparent;
+        font-size: 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        
+        &:focus ~ label,
+        &:valid ~ label {
+          top: -35px;
+          font-size: 14px;
+        }
       }
     }
+
+
 
 
     .row {
