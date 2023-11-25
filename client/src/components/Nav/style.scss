@@ -78,4 +78,13 @@ header {
             margin-left: 1rem;
         }
     }
+    @media screen and (max-width: 768px) {
+        padding: 2rem 5%;
+        flex-direction: column;
+    
+        nav {
+          margin-top: 1rem;
+          text-align: center;
+        }
+      }
 }

@@ -22,6 +22,7 @@ body {
     padding-bottom: 10px;
     align-items: flex-start;
     justify-content: space-around;
+    flex-wrap: wrap;
   }
 
   #link-box a {
@@ -38,3 +39,8 @@ body {
     margin-top: 5px; /* Adjust top margin of the text */
   }
 
+  @media screen and (max-width: 600px) {
+    #link-box a {
+      font-size: 18px;
+    }
+  }
