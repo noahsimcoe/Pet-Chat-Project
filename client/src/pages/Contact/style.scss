@@ -1,4 +1,3 @@
-
 .contact-page {
   margin: 0;
   padding: 0;
@@ -9,14 +8,14 @@
   align-items: center;
   width: 100%;
   height: 100vh;
-  
+
   .contact-header {
     text-align: center;
     margin-top: 0;
     margin-bottom: 20px;
     color: #fff;
   }
-  
+
   .contact-form {
     width: 90%;
     max-width: 600px;
@@ -39,7 +38,7 @@
         transition: 0.2s;
         pointer-events: none;
       }
-  
+
       input,
       textarea {
         width: 100%;
@@ -51,17 +50,14 @@
         font-size: 15px;
         margin-bottom: 15px;
         border-radius: 5px;
-        
-        &:focus ~ label,
-        &:valid ~ label {
+
+        &:focus~label,
+        &:valid~label {
           top: -35px;
           font-size: 14px;
         }
       }
     }
-
-
-
 
     .row {
       display: flex;
