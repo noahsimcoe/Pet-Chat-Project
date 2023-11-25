@@ -3,7 +3,6 @@ import { useMutation } from '@apollo/client';
 import { CREATE_SERVICE } from '../../utils/mutations';
 import { Card, Form, Button } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
-//import decode from 'jwt-decode';
 import './style.scss';
 
 
@@ -48,45 +47,34 @@ const CreateService = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+  
     try {
       const { data } = await createService({
         variables: {
-          serviceName: formState.serviceName,
+          serviceName: formState.serviceName, 
           description: formState.description,
           userId: userId,
         },
       });
-
+  
       console.log('Service created:', data.createService);
-
+  
       setFormState({
         serviceName: '',
         description: '',
       });
-
-      createService(data.createService);
-
-      await toast.success("Your service has been created!", {
+  
+      toast.success("Your service has been created!", {
         position: toast.POSITION.TOP_CENTER,
-        autoClose: 100,
+        autoClose: 1500,
         onClose: () => {
           window.location.reload();
         },
       });
-
-      localStorage.setItem('serviceName', formState.serviceName);
-
-     
-
-
-
+  
     } catch (err) {
       console.error(err);
     }
-
-    
-
   };
 
   return (
@@ -95,7 +83,7 @@ const CreateService = () => {
         <div className="col-12 col-lg-10">
           <div className="card">
             <div className="card-body">
-              <div className="box-container"> {/* Container for grouping elements */}
+              <div className="box-container"> 
                 <form onSubmit={handleFormSubmit}>
                   <div class="center-screen">
                     <div className="service-input-box">
