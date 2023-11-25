@@ -166,8 +166,8 @@ export const CREATE_SERVICE = gql`
 `;
 
 export const DELETE_SERVICE = gql`
-  mutation deleteService($serviceId: ID!) {
-    deleteService(serviceId: $serviceId) {
+  mutation deleteService($serviceId: ID!, $userId: ID) {
+    deleteService(serviceId: $serviceId, userId: $userId) {
       _id
       name
       description

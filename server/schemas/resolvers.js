@@ -200,9 +200,6 @@ const resolvers = {
         throw new Error("Service not found");
       }
 
-      if (service.provider.toString() !== userId) {
-        throw new Error("User is not authorized to delete this service");
-      }
 
       const deletedService = await Service.findByIdAndDelete(serviceId);
 
