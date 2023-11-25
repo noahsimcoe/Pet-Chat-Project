@@ -1,5 +1,4 @@
 
-
 .service-list {
   display: flex;
   flex-wrap: wrap;
@@ -8,8 +7,6 @@
   max-width: 1000px; 
   margin: 0 auto;
 }
-
-
 
 .service-card {
     width: 300px; 
@@ -34,12 +31,9 @@
     .button {
       margin: auto;
       display: block;
-    
     }
-    
   }
-  
-  
+
   .form-input {
     margin: auto;
     display: block;
@@ -48,5 +42,19 @@
     margin: auto;
     display: block;
     margin-bottom: 20px;
-  
   }
+
+.service-input-box {
+  width: 23%;
+}
+
+.center-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.service-input-box {
+  margin-bottom: 10px; /* Adjust spacing between input box and button */
+}

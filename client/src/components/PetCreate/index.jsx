@@ -74,13 +74,12 @@ const CreatePet = () => {
         vaccinations: '',
       });
 
-      setStartDate(new Date());
+      await setStartDate(new Date());
 
-      toast.success("Your pet has been created!", {
+      await toast.success("Your pet has been created!", {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 2250,
       });
-      // Rest of your code that relies on the image upload being completed
     } catch (err) {
       console.error(err);
     }
@@ -93,9 +92,7 @@ const CreatePet = () => {
   const imageListRef = ref(storage, "images/");
 
   const uploadImage = () => {
-    // ends function if you didn't select an image
     if (imageUpload == null) return
-    // helps ensure all images have different names
     const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
 
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
@@ -106,12 +103,10 @@ const CreatePet = () => {
     });
   };
 
-  // creating a new array of the newest images
   useEffect(() => {
     listAll(imageListRef).then((response) => {
       response.items.forEach((item) => {
         getDownloadURL(item).then((url) => {
-          // setting new list of images to the items from the cloud storage
           setImageList((prev) => [...prev, url]);
         })
       })
