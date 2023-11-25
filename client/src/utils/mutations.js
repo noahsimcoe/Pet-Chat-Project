@@ -108,7 +108,6 @@ export const DELETE_PET = gql`
       breed
       owner {
         _id
-        firstName
       }
       birthdate
       image

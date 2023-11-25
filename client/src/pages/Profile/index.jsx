@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
-
 import { USER_PROFILE } from '../../utils/actions';
 import { QUERY_USER } from '../../utils/queries';
 import { useStoreContext } from '../../utils/store-context';
@@ -50,8 +49,11 @@ export default function Profile() {
               ))}
             </ul>
           </div>
-
         )}
+
+        <div>
+        </div>
+
 
         </>
       )}
