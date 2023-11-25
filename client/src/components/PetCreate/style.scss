@@ -12,9 +12,9 @@
     background-color: #007bff;
     border-radius: 8px;
     display: block;
-    width: 150px; /* Adjust width as needed */
-    margin: 0 auto; /* Center the button */
-    padding: 10px; /* Adjust padding as needed */
+    width: 150px;
+    margin: 0 auto;
+    padding: 10px;
     color: white;
     text-align: center;
     cursor: pointer;
@@ -25,11 +25,11 @@
   .form-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px; /* Optional: Adds some space between form groups */
+    margin-bottom: 10px;
   }
   
   label {
-    margin-bottom: 5px; /* Optional: Adds space between label and input */
+    margin-bottom: 5px;
   }
 
   .form-input {
@@ -39,36 +39,32 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    box-sizing: border-box; /* Ensure padding is included in width */
+    box-sizing: border-box;
   }
-  
-  /* Style for placeholder text */
+
+
   .form-input::placeholder {
-    color: #999; /* Adjust placeholder color */
+    color: #999;
   }
-  
-  /* Hover and focus styles */
+
   .form-input:hover,
   .form-input:focus {
-    border-color: #5e9ad6; /* Adjust border color on hover and focus */
+    border-color: #5e9ad6;
     outline: none;
   }
 
-  /* Container for the DatePicker */
 .form-group {
   margin-bottom: 15px;
 }
 
-/* Style for the label */
 .form-label {
   display: block;
   margin-bottom: 5px;
-  color: #333; /* Adjust label color */
+  color: #333;
   font-weight: bold;
   font-size: 16px;
 }
 
-/* Custom styles for DatePicker */
 .custom-datepicker {
   width: 100%;
   padding: 10px;
@@ -78,19 +74,17 @@
   box-sizing: border-box;
 }
 
-/* Container for the checkbox */
 .vaxx {
   margin-bottom: 15px;
   display: flex;
   align-items: center;
 }
 
-/* Style for the label */
 .form-label {
   display: block;
   margin-left: 10px;
   margin-bottom: 5px;
-  color: #333; /* Adjust label color */
+  color: #333;
   font-weight: bold;
   font-size: 18px;
 }
@@ -99,8 +93,8 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  width: 25px; /* Adjust the checkbox size */
-  height: 25px; /* Adjust the checkbox size */
+  width: 25px;
+  height: 25px;
   border: 1px solid #ccc;
   border-radius: 3px;
   outline: none;
@@ -108,25 +102,21 @@
   margin-left: 30px;
 }
 
-/* Custom checkbox checked style */
 .custom-checkbox:checked {
-  background-color: #007bff; /* Adjust the color when checked */
+  background-color: #007bff;
 }
 
-/* Styles for the label text */
 .custom-checkbox + label {
-  margin-left: 10px; /* Spacing between checkbox and label */
+  margin-left: 10px;
   font-size: 16px;
-  color: #333; /* Adjust label color */
+  color: #333;
 }
 
-/* Style for the container */
 .add-picture-section {
   margin-bottom: 10px;
   text-align: left;
 }
 
-/* Custom styling for file input */
 .custom-file-input {
   display: inline-block;
   padding: 10px;
@@ -134,13 +124,13 @@
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-  background-color: #f9f9f9; /* Background color */
+  background-color: #f9f9f9;
   width: 100%;
 }
 
 .center {
   display: flex;
-  align-items: center; /* Align items vertically */
-  justify-content: center; /* Center content horizontally */
-  flex-direction: column; /* Align items in a column */
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }

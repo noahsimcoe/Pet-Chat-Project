@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { CREATE_SERVICE } from '../../utils/mutations';
 import { Card, Form, Button } from 'react-bootstrap';
+import { ToastContainer, toast } from 'react-toastify';
 //import decode from 'jwt-decode';
 import './style.scss';
 
@@ -11,7 +12,7 @@ const getAuthenticatedUserId = () => {
 
   if (token) {
     try {
-      
+
       const decodedToken = decode(token);
 
       return decodedToken.userId;
@@ -53,13 +54,12 @@ const CreateService = () => {
         variables: {
           serviceName: formState.serviceName,
           description: formState.description,
-          userId: userId, 
+          userId: userId,
         },
       });
 
       console.log('Service created:', data.createService);
-     
-     
+
       setFormState({
         serviceName: '',
         description: '',
@@ -67,7 +67,11 @@ const CreateService = () => {
 
       createService(data.createService);
 
-     
+      await toast.success("Your service has been created!", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 2250,
+      });
+
     } catch (err) {
       console.error(err);
     }
@@ -81,28 +85,38 @@ const CreateService = () => {
             <div className="card-body">
               <div className="box-container"> {/* Container for grouping elements */}
                 <form onSubmit={handleFormSubmit}>
-                  <input
-                    className="form-input"
-                    placeholder="Service Name"
-                    name="serviceName"
-                    type="text"
-                    value={formState.serviceName}
-                    onChange={handleChange}
-                  />
-                  <textarea id='Description'
-                    className="form-input"
-                    placeholder="Description"
-                    name="description"
-                    value={formState.description}
-                    onChange={handleChange}
-                  />
-                  <button id='Button'
-                    className="btn btn-block btn-info submit-btn"
-                    type="submit"
-                  >
-                    Create Service
-                  </button>
+                  <div class="center-screen">
+                    <div className="service-input-box">
+                      <input
+                        className="form-input"
+                        placeholder="Service Name"
+                        name="serviceName"
+                        type="text"
+                        value={formState.serviceName}
+                        onChange={handleChange}
+                      />
+                      <textarea id='Description'
+                        className="form-input"
+                        placeholder="Description"
+                        name="description"
+                        value={formState.description}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <button id='Button'
+                      className="btn btn-block btn-info submit-btn"
+                      type="submit"
+                    >
+                      Create Service
+                    </button>
+                  </div>
                 </form>
+                <div>
+                <ToastContainer
+                  theme="colored"
+                  pauseOnHover
+                />
+              </div>
               </div>
               {error && (
                 <div className="my-3 p-3 bg-danger text-white">
