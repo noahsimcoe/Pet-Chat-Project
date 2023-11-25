@@ -69,14 +69,24 @@ const CreateService = () => {
 
       await toast.success("Your service has been created!", {
         position: toast.POSITION.TOP_CENTER,
-        autoClose: 2250,
+        autoClose: 100,
+        onClose: () => {
+          window.location.reload();
+        },
       });
 
-      window.location.reload();
+      localStorage.setItem('serviceName', formState.serviceName);
+
+     
+
+
 
     } catch (err) {
       console.error(err);
     }
+
+    
+
   };
 
   return (
