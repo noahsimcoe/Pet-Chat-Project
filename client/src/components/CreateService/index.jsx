@@ -72,6 +72,8 @@ const CreateService = () => {
         autoClose: 2250,
       });
 
+      window.location.reload();
+
     } catch (err) {
       console.error(err);
     }
