@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import './style.scss';
 
 
+
 const getAuthenticatedUserId = () => {
   const token = localStorage.getItem('authToken');
 
@@ -127,6 +128,7 @@ const CreateService = () => {
           </div>
         </div>
       </main>
+    
     </Card>
   );
 };
