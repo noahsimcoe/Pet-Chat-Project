@@ -88,9 +88,10 @@ return (
           <form className="contact-form" onSubmit={sendEmail}>
             <div className="row">
               <div className='input-group'>
-                <label htmlFor="user-name">Your name</label>
+                <label htmlFor="user-name"></label>
                 <input
                 type="text"
+                placeholder='Your name'
                 className="user-name form-control"
                 name="from_name"
                 value={name}
@@ -100,10 +101,11 @@ return (
 
               <div className='input-group'>
                 <label htmlFor="user-email" className="user-email" name="user-email">
-                  Email
+                  
                 </label>
                 <input
                 type="text"
+                placeholder='Email Address'
                 className="user-email form-control"
                 name="user_email"
                 value={email}
@@ -114,10 +116,11 @@ return (
 
             <div className='input-group'>
               <label htmlFor="message" className="user-message">
-                Message
+                
               </label>
               <textarea
               className="message form-control"
+              placeholder='Message'
               name="message"
               value={message}
               onChange={handleChange}
