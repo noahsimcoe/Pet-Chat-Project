@@ -57,14 +57,6 @@ const CreatePet = () => {
     try {
       await uploadImage();
 
-      const { data } = await createPet({
-        variables: {
-          ...formState,
-          image: newImageUrl,
-          birthdate: startDate,
-        },
-      });
-
       setFormState({
         name: '',
         species: '',
@@ -91,16 +83,21 @@ const CreatePet = () => {
 
   const imageListRef = ref(storage, "images/");
 
-  const uploadImage = () => {
-    if (imageUpload == null) return
-    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+  const uploadImage = async () => {
+    try {
+      if (imageUpload == null) return;
+      const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+      const snapshot = await uploadBytes(imageRef, imageUpload);
+      const url = await getDownloadURL(snapshot.ref);
 
-    uploadBytes(imageRef, imageUpload).then((snapshot) => {
-      getDownloadURL(snapshot.ref).then((url) => {
-        setImageList((prev) => [...prev, url])
-        setNewImageUrl(url);
-      });
-    });
+      setImageList((prev) => [...prev, url])
+      setNewImageUrl(url);
+
+      handleCreatePet(url);
+
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -112,6 +109,20 @@ const CreatePet = () => {
       })
     })
   }, [])
+
+  const handleCreatePet = async (imageUrl) => {
+    try {
+      const { data } = await createPet({
+        variables: {
+          ...formState,
+          image: imageUrl,
+          birthdate: startDate,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <>
