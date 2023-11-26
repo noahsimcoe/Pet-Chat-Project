@@ -42,9 +42,12 @@ export const QUERY_SERVICE =gql`
     _id
     name
     description
-    provider {
+    provider { _id firstName }
+    reviews {
       _id
-      firstName
+      comment
+      rating
+      user { _id firstName }
     }
   }
 }
