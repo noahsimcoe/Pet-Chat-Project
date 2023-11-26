@@ -7,11 +7,11 @@ const resolvers = {
       if (!context.user) {
         throw AuthenticationError;
       }
-      return await User.findById(context.user._id).populate("pets");
+      return await User.findById(context.user._id).populate("pets").populate("services").populate("reviews");
     },
     pets: async () => {
       try {
-        const allPets = await Pet.find().populate("owner"); // fetch ALL pets
+        const allPets = await Pet.find().populate("owner");
         return allPets;
       } catch (error) {
         console.error(error);
