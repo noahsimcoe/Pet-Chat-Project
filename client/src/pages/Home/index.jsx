@@ -1,6 +1,7 @@
 import React, { useState, useEffect }  from 'react';
 import CreateService from '../../components/CreateService';
 import CatComponent from  '../../components/RandomCat';
+import Review from '../../components/Review';
 import './style.scss';
 import { QUERY_SERVICE } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
@@ -53,6 +54,7 @@ const addService = (newService) => {
       <div key={index} className="service-card">
           <h3>{service.name}</h3>
           <p>{service.description}</p>
+          <Review />
           <button onClick={() => deleteService(service._id)}>
       🗑️ 
     </button>

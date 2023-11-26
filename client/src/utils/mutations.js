@@ -118,19 +118,16 @@ export const DELETE_PET = gql`
   }
 `;
 export const CREATE_REVIEW = gql`
-  mutation createReview($userId: ID!, $service: String!, $rating: Float!, $comment: String) {
-    createReview(userId: $userId, service: $service, rating: $rating, comment: $comment) {
-      review {
+  mutation createReview($userId: ID!, $serviceId: ID!, $comment: String) {
+    createReview(userId: $userId, serviceId: $serviceId, comment: $comment) {
+      _id
+      user {
         _id
-        user {
-          _id
-          firstName
-          lastName
-        }
-        service
-        rating
-        comment
+        firstName
+        lastName
       }
+      serviceId
+      comment
     }
   }
 `;
