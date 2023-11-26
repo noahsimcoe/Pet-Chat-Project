@@ -9,28 +9,25 @@ import { DELETE_SERVICE } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 
 export default function HomePage() {
-  const [services, setServices] = useState([]); 
-const {loading, data, refetch} = useQuery(QUERY_SERVICE )
-useEffect(() =>{
-data && setServices(data.services)
+  const [services, setServices] = useState([]);
+  const { loading, data, refetch } = useQuery(QUERY_SERVICE);
+  useEffect(() => {
+    data && setServices(data.services);
+  }, [data]);
 
-}, [data])
-  
-
-const addService = (newService) => {
+  const addService = (newService) => {
     setServices((prevServices) => {
       const updatedServices = [...prevServices, newService];
-      console.log('Updated services array:', updatedServices);
+      console.log("Updated services array:", updatedServices);
       return updatedServices;
-    }); 
-    refetch()
+    });
+    refetch();
   };
-  
+
   const [deleteServiceMutation] = useMutation(DELETE_SERVICE);
 
   const deleteService = async (serviceId) => {
     try {
-     
       await deleteServiceMutation({
         variables: { serviceId },
       });
@@ -38,15 +35,14 @@ const addService = (newService) => {
         prevServices.filter((service) => service._id !== serviceId)
       );
     } catch (error) {
-      console.error('Error deleting service:', error);
+      console.error("Error deleting service:", error);
     }
   };
 
-
   return (
     <div className="home-page">
-    <CatComponent />
-    <CreateService createService={addService} />
+      <CatComponent />
+      <CreateService createService={addService} />
 
     <div className="service-list">
       {services && services.map((service, index) => (

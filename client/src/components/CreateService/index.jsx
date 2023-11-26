@@ -86,7 +86,7 @@ const CreateService = () => {
             <div className="card-body">
               <div className="box-container"> 
                 <form onSubmit={handleFormSubmit}>
-                  <div class="center-screen">
+                  <div className="center-screen">
                     <div className="service-input-box">
                       <input
                         className="form-input"

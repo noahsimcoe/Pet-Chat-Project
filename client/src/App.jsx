@@ -12,7 +12,6 @@ import Nav from './components/Nav';
 import Auth from './utils/auth';
 import Landing from "./pages/Landing";
 import Footer from './components/Footer';
-import Login from './components/Login';
 
 import './app.scss';
 
