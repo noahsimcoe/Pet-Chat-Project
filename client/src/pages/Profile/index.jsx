@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { USER_PROFILE } from '../../utils/actions';
-import { QUERY_USER, QUERY_SERVICE } from '../../utils/queries';
+import { QUERY_USER, QUERY_SERVICE, QUERY_PETS } from '../../utils/queries';
 import { useStoreContext } from '../../utils/store-context';
 
 import './style.scss';
@@ -9,7 +9,8 @@ import './style.scss';
 export default function Profile() {
   const [user, dispatch] = useStoreContext('user');
   const { data: userData, loading: userLoading } = useQuery(QUERY_USER);
-  const { data: serviceData, loading: serviceLoading } = useQuery(QUERY_SERVICE);
+  // const { data: petData, loading: petLoading } = useQuery(QUERY_PETS);
+  // const { data: serviceData, loading: serviceLoading } = useQuery(QUERY_SERVICE);
 
   useEffect(() => {
     if (userData && userData.user) {
@@ -49,11 +50,11 @@ export default function Profile() {
           </div>
         )}
 
-        {serviceData && serviceData?.services.length > 0 && (
+        {user.profile.services && user.profile.services.length > 0 && (
           <div>
             <h2>My Services</h2>
             <ul>
-              {serviceData.services.map(service => {
+              {user.profile.services.map(service => {
                 <li key={service._id}>{service.name} - {service.description}
                   <ul>
                     {service.reviews.map(review => (

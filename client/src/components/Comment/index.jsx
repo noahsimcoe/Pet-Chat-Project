@@ -5,7 +5,6 @@ import { CREATE_REVIEW, DELETE_REVIEW } from '../../utils/mutations';
 
 const Comment = ({ serviceId, comments }) => {
   const [comment, setComment] = useState('');
-   
 
   const [createReview] = useMutation(CREATE_REVIEW);
   const [deleteReview] = useMutation(DELETE_REVIEW);
@@ -57,7 +56,7 @@ const Comment = ({ serviceId, comments }) => {
       <ul>
         {comments.map((comment) => (
           <li key={comment._id}>
-           
+          
             <button onClick={() => handleDeleteComment(comment._id)}>Delete</button>
           </li>
         ))}

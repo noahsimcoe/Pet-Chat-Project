@@ -12,18 +12,35 @@ export const QUERY_USER = gql`
         name
         species
         breed
-        owner {
-          lastName
-        }
         birthdate
         image
         weight
         height
         vaccinations
       }
+      services {
+        _id
+        name
+        description
+        reviews {
+          _id
+          comment
+          rating
+        }
+      }
+      reviews {
+        _id
+        comment
+        rating
+        service {
+          _id
+          name
+        }
+      }
     }
   }
 `;
+
 
 export const QUERY_PETS = gql`
   {
