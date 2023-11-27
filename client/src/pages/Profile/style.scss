@@ -29,4 +29,19 @@
             }
         }
     }
+    
+    @media screen and (max-width: 780px) {
+        h1 {
+            margin: 2rem auto;
+        }
+        
+        .loading-data, .display-user {
+            width: 100%;
+            max-width: none;
+        }
+        
+        .display-user li {
+            margin: 0.5rem 0;
+        }
+    }
 }

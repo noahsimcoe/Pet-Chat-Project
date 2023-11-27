@@ -9,7 +9,6 @@ const Contact = () => {
   const serviceId = import.meta.env.VITE_REACT_APP_SERVICE_ID;
   const formId = import.meta.env.VITE_REACT_APP_FORM_ID;
   const publicKey = import.meta.env.VITE_REACT_APP_USER_ID;
-  console.log(publicKey, serviceId);
 
 const [ name, setName ] = useState('');
 const [ email, setEmail ] = useState('');
