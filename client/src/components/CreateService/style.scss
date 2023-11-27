@@ -6,6 +6,7 @@
   align-items: flex-start;
   max-width: 1000px; 
   margin: 0 auto;
+  margin-bottom: 25%;
 }
 
 .service-card {
@@ -15,8 +16,10 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     background-color: #6e7c7cd7;
+    margin-top: 15px;
     margin-bottom: 25px;
     text-align: center;
+    
     
   
     h3 {
@@ -56,5 +59,11 @@
 }
 
 .service-input-box {
-  margin-bottom: 10px;
+  width: 300px; 
+  margin: 0 auto; 
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #6e7c7cd7;
+  margin-bottom: 25px;
 }

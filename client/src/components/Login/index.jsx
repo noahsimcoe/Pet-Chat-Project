@@ -69,7 +69,7 @@ export default function Nav() {
                     
                     />
                     <span className="icon-container"  style={{ cursor: 'pointer' }} >
-                        <Icon className='mr-10' onClick={handleToggle} icon={icon} size={15}></Icon>
+                        <Icon className='mr-10 icon' onClick={handleToggle} icon={icon} size={15}></Icon>
                     </span>
                 </div>
             </div>

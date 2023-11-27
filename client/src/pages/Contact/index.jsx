@@ -128,7 +128,8 @@ return (
 
             <div>
               <input
-              type="submit" value="Send" className="btn btn-primary" />
+              className="submit-btn"
+              type="submit"/>
             </div>
           </form>
           
