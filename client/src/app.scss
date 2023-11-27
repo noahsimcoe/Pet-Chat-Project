@@ -1,11 +1,24 @@
-#app-shell {
-  margin: 0;
-  padding: 0;
+* {
+  box-sizing: border-box;
 }
 
-body {
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
   background-image: url('./assets/images/background.png');
   background-size: cover;
   background-color: #92967D;
   
 }
+
+
+#app-shell {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+
+
+

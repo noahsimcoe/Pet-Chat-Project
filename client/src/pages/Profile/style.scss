@@ -1,47 +1,60 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  color: beige;
+}
+
 #profile-page {
+  
+  margin-bottom: 50%;
+
+ 
+  h1 {
+    margin: 4rem auto;
+    text-align: center;
+  }
+
+  .loading-data {
+    width: 90%;
+    max-width: 600px;
+    margin: 2rem auto;
+    text-align: center;
+  }
+
+  .display-user {
+    width: 90%;
+    max-width: 600px;
+    margin: 2rem auto;
+    list-style: none;
+
+    li {
+      padding: 0;
+      margin: 1rem 0;
+      color: #555;
+
+      .display-user__label {
+        font-weight: bold;
+        margin-right: 1rem;
+        color: #000;
+      }
+    }
+  }
+
+  @media screen and (max-width: 780px) {
     h1 {
-        margin: 4rem auto;
-        text-align: center;
+      margin: 2rem auto;
     }
 
-    .loading-data {
-        width: 90%;
-        max-width: 600px;
-        margin: 2rem auto;
-        text-align: center;
-    }
-
+    .loading-data,
     .display-user {
-        width: 90%;
-        max-width: 600px;
-        margin: 2rem auto;
-        list-style: none;
-
-        li {
-            padding: 0;
-            margin: 1rem 0;
-            color: #555;
-
-            .display-user__label {
-                font-weight: bold;
-                margin-right: 1rem;
-                color: #000;
-            }
-        }
+      width: 100%;
+      max-width: none;
     }
-    
-    @media screen and (max-width: 780px) {
-        h1 {
-            margin: 2rem auto;
-        }
-        
-        .loading-data, .display-user {
-            width: 100%;
-            max-width: none;
-        }
-        
-        .display-user li {
-            margin: 0.5rem 0;
-        }
+
+    .display-user li {
+      margin: 0.5rem 0;
     }
+  }
 }

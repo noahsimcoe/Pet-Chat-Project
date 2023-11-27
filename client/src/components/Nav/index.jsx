@@ -24,19 +24,14 @@ export default function Nav() {
             <>
               <Link to="/">Home</Link>
               <Link to="/profile">Profile</Link>
-              <Link to="/register">Register a Pet</Link>
+              <Link to="/register">Register Pet</Link>
               <Link to="/contact" >Contact</Link>
               <div className="logout-link" onClick={() => Auth.logout()}>Logout</div>
             </>
           )}
         </nav>
 
-        <img
-          onClick={() => dispatch({ type: THEME_TOGGLE })}
-          className="header-theme-toggle"
-          src={darkToggle}
-          alt="Theme Toggle"
-        />
+      
       </div>
     </header>
   );

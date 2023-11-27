@@ -2,11 +2,12 @@ import React, { useState, useEffect }  from 'react';
 import CreateService from '../../components/CreateService';
 import CatComponent from  '../../components/RandomCat';
 import Review from '../../components/Review';
-import './style.scss';
 import { QUERY_SERVICE } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
 import { DELETE_SERVICE } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
+
+import './style.scss';
 
 export default function HomePage() {
   const [services, setServices] = useState([]);

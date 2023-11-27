@@ -1,136 +1,136 @@
 .createPetCard {
-    width: 300px;
-    margin: 0 auto;
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    background-color: #6e7c7cd7;
-  }
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #6e7c7cd7;
+}
 
-  .submit-btn {
-    background-color: #007bff;
-    border-radius: 8px;
-    display: block;
-    width: 150px;
-    margin: 0 auto;
-    padding: 10px;
-    color: white;
-    text-align: center;
-    cursor: pointer;
-    border: none;
-    outline: none;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-  }
-  
-  label {
-    margin-bottom: 5px;
-  }
-
-  .form-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    box-sizing: border-box;
-  }
-
-
-  .form-input::placeholder {
-    color: #999;
-  }
-
-  .form-input:hover,
-  .form-input:focus {
-    border-color: #5e9ad6;
-    outline: none;
-  }
+.submit-btn {
+  background-color: #007bff;
+  border-radius: 8px;
+  display: block;
+  width: 150px;
+  margin: 0 auto;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
 
 .form-group {
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
 }
 
-.form-label {
-  display: block;
+label {
   margin-bottom: 5px;
-  color: #333;
-  font-weight: bold;
-  font-size: 16px;
 }
 
-.custom-datepicker {
+.form-input {
   width: 100%;
   padding: 10px;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
   box-sizing: border-box;
 }
 
-.vaxx {
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
+
+.form-input::placeholder {
+  color: #999;
+}
+
+.form-input:hover,
+.form-input:focus {
+  border-color: #5e9ad6;
+  outline: none;
+}
+
+.form-group {
+margin-bottom: 15px;
 }
 
 .form-label {
-  display: block;
-  margin-left: 10px;
-  margin-bottom: 5px;
-  color: #333;
-  font-weight: bold;
-  font-size: 18px;
+display: block;
+margin-bottom: 5px;
+color: #333;
+font-weight: bold;
+font-size: 16px;
+}
+
+.custom-datepicker {
+width: 100%;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+font-size: 16px;
+box-sizing: border-box;
+}
+
+.vaxx {
+margin-bottom: 15px;
+display: flex;
+align-items: center;
+}
+
+.form-label {
+display: block;
+margin-left: 10px;
+margin-bottom: 5px;
+color: #333;
+font-weight: bold;
+font-size: 18px;
 }
 
 .custom-checkbox {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  outline: none;
-  cursor: pointer;
-  margin-left: 30px;
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+width: 25px;
+height: 25px;
+border: 1px solid #ccc;
+border-radius: 3px;
+outline: none;
+cursor: pointer;
+margin-left: 30px;
 }
 
 .custom-checkbox:checked {
-  background-color: #007bff;
+background-color: #007bff;
 }
 
 .custom-checkbox + label {
-  margin-left: 10px;
-  font-size: 16px;
-  color: #333;
+margin-left: 10px;
+font-size: 16px;
+color: #333;
 }
 
 .add-picture-section {
-  margin-bottom: 10px;
-  text-align: left;
+margin-bottom: 10px;
+text-align: left;
 }
 
 .custom-file-input {
-  display: inline-block;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: #f9f9f9;
-  width: 100%;
+display: inline-block;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+font-size: 16px;
+cursor: pointer;
+background-color: #f9f9f9;
+width: 100%;
 }
 
 .center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
 }

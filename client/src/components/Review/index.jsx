@@ -1,4 +1,3 @@
-// Review.js
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_REVIEW } from "../../utils/mutations";
@@ -38,7 +37,10 @@ const Review = ({ services, deleteService }) => {
         },
       });
       setReviewContent("");
-      // You may want to refetch services or update the local cache here
+
+      //fetch?
+
+
     } catch (error) {
       console.error(error);
     }
