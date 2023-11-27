@@ -1,4 +1,18 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+}
 
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    justify-content: center;
+  }
 
-
-// style={{ width: '18rem', border: '1px solid #ddd' }} 
+  .signup, .login {
+    width: 100%;
+    margin-bottom: 20px;
+  } 
+}
