@@ -31,12 +31,7 @@ export default function Nav() {
           )}
         </nav>
 
-        <img
-          onClick={() => dispatch({ type: THEME_TOGGLE })}
-          className="header-theme-toggle"
-          src={darkToggle}
-          alt="Theme Toggle"
-        />
+        
       </div>
     </header>
   );

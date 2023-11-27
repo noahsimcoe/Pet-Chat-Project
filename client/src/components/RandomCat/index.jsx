@@ -33,7 +33,8 @@ const CatComponent = () => {
       <Card.Text>
           Enjoy some random kitties!
         </Card.Text>
-        <Button id="nextCatBtn" onClick={btnClick}>
+        <Button className="submit-btn"
+              type="submit" id="nextCatBtn" onClick={btnClick}>
         Next Kitty
       </Button>
       </Card.Body>
