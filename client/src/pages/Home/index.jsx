@@ -14,15 +14,15 @@ export default function HomePage() {
 
   const serviceData = data?.services || [];
   
-
-  // const addService = (newService) => {
-  //   setServices((prevServices) => {
-  //     const updatedServices = [...prevServices, newService];
-  //     console.log("Updated services array:", updatedServices);
-  //     return updatedServices;
-  //   });
-  //   refetch();
-  // };
+//comment
+  const addService = (newService) => {
+    setServices((prevServices) => {
+      const updatedServices = [...prevServices, newService];
+      console.log("Updated services array:", updatedServices);
+      return updatedServices;
+    });
+    refetch();
+  };
 
   const [deleteServiceMutation] = useMutation(DELETE_SERVICE);
 
@@ -46,6 +46,10 @@ export default function HomePage() {
       {serviceData.map((service, index) => (
         
       <div key={index} className="service-card">
+          <h3>{service.name}</h3>
+          <p>{service.description}</p>
+          
+          
           <Review deleteService={deleteService} service = {service}/>
       
         </div>

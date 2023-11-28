@@ -73,7 +73,7 @@ const CreateService = () => {
   };
 
   return (
-    <Card className="createServiceCard">
+<Card className="createServiceCard">
       <main className="flex-row justify-center mb-4">
         <div className="col-12 col-lg-10">
           <div className="card">
