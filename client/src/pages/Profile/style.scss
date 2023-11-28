@@ -45,3 +45,42 @@
         }
     }
 }
+
+/* CSS for pet card layout */
+.pet-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .pet-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px; /* Adjust as needed */
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pet-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .pet-card p {
+    margin-bottom: 8px;
+  }
+  
+  .pet-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    margin-top: 10px;
+  }
+
+#profile-page {
+    margin-bottom: 300px;
+}
