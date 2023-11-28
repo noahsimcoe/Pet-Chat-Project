@@ -5,8 +5,6 @@ import { Card, Form, Button } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import './style.scss';
 
-
-
 const getAuthenticatedUserId = () => {
   const token = localStorage.getItem('authToken');
 
@@ -18,15 +16,11 @@ const getAuthenticatedUserId = () => {
       return decodedToken.userId;
     } catch (error) {
       console.error('Error decoding token:', error);
-      return null; 
+      return null;
     }
   }
-
-  return null; 
+  return null;
 };
-
-
-
 
 const CreateService = () => {
   const [formState, setFormState] = useState({
@@ -79,7 +73,7 @@ const CreateService = () => {
   };
 
   return (
-    <Card className="createServiceCard">
+<Card className="createServiceCard">
       <main className="flex-row justify-center mb-4">
         <div className="col-12 col-lg-10">
           <div className="card">
