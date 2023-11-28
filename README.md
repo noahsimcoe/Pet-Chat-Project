@@ -83,7 +83,7 @@ To open the app use the command "npm run develop", the app will open automatical
 
 ## Deployment
 This project will be deploy temporary in Heroku:
-* LINK
+* https://pet-chat-8dcd7234f1ae.herokuapp.com/
 
 ## Contribution
 If you would like to collaborate on this project for future development, please contact any of the four developers in the Contact section down below. We will be more than happy to heard other people's insights about how to improve this amazing project.
@@ -93,6 +93,6 @@ If you would like to collaborate on this project for future development, please 
 For Collaborations or any inquiry, please contact any of the four developers listed here:
 * https://github.com/britaing - Britain Gilgour
 * https://github.com/noahsimcoe - Noah Simcoe
-* https://github.com/Jaxson20 - 
+* https://github.com/Jaxson20 - Jaxson Fellhauer
 * https://github.com/elchinatalpf - Javier Morales
 
