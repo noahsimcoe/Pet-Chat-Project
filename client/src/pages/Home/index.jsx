@@ -10,7 +10,9 @@ import { useMutation } from '@apollo/client';
 
 export default function HomePage() {
   // const [services, setServices] = useState([]);
-  const { loading, data, refetch } = useQuery(QUERY_SERVICE);
+  const { loading, data, refetch } = useQuery(QUERY_SERVICE, {
+    pollInterval: 500
+  });
 
   const serviceData = data?.services || [];
   
@@ -46,7 +48,7 @@ export default function HomePage() {
       {serviceData.map((service, index) => (
         
       <div key={index} className="service-card">
-          <Review deleteService={deleteService} service = {service}/>       
+          <Review deleteService={deleteService} service = {service}/>
       
         </div>
       ))}
