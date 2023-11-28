@@ -144,7 +144,6 @@ mutation DeleteReview($reviewId: ID!) {
       firstName
     }
     service
-    rating
     comment
   }
 }

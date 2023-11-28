@@ -25,13 +25,11 @@ export const QUERY_USER = gql`
         reviews {
           _id
           comment
-          rating
         }
       }
       reviews {
         _id
         comment
-        rating
         service {
           _id
           name
@@ -63,7 +61,6 @@ export const QUERY_SERVICE =gql`
     reviews {
       _id
       comment
-      rating
       user { _id firstName }
     }
   }

@@ -52,8 +52,7 @@ export default function Profile() {
                   <ul>
                     {service.reviews.map(review => (
                       <li key={review._id}>
-                        Review By {review.user.firstName}: {review.comment} (Rating: {review.rating})
-
+                        Review By {review.user.firstName}: {review.comment})
                       </li>
                     ))}
                   </ul>
@@ -69,7 +68,7 @@ export default function Profile() {
             <ul>
               {userData?.user.reviews.map(review => (
                 <li key={review._id}>
-                  {review.service.name}: {review.comment} (Rating: {review.rating})
+                  {review.service.name}: {review.comment})
                 </li>
               ))}
             </ul>
