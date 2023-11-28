@@ -68,9 +68,6 @@ const CreateService = () => {
       toast.success("Your service has been created!", {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 1500,
-        onClose: () => {
-          window.location.reload();
-        },
       });
   
     } catch (err) {

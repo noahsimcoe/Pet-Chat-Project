@@ -30,14 +30,7 @@ const Review = ({ service, deleteService }) => {
 
   const handleReviewSubmit = async (serviceId) => {
     try {
-      await createReview({
-        variables: {
-          serviceId,
-          userId,
-          comment: reviewContent,
-        },
-      });
-      setReviewContent("");
+      
       // You may want to refetch services or update the local cache here
     } catch (error) {
       console.error(error);
@@ -57,7 +50,7 @@ const Review = ({ service, deleteService }) => {
                   value={reviewContent}
                   onChange={(e) => setReviewContent(e.target.value)}
                 />
-                <button onClick={() => handleReviewSubmit(service._id)}>
+                <button onClick={() => handleReviewSubmit()}>
                   Leave Review
                 </button>
               </div>
