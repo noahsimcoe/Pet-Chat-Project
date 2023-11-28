@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
-import { USER_PROFILE } from '../../utils/actions';
-import { QUERY_USER, QUERY_SERVICE, QUERY_PETS } from '../../utils/queries';
-import { useStoreContext } from '../../utils/store-context';
+import { QUERY_USER } from '../../utils/queries';
 import dayjs from 'dayjs';
 
 import './style.scss';
@@ -65,7 +63,7 @@ export default function Profile() {
                   <ul>
                     {service.reviews.map(review => (
                       <li key={review._id}>
-                        Review By {review.user.firstName}: {review.comment})
+                        Review By {review.user.firstName}: {review.comment}
 
                       </li>
                     ))}
@@ -82,7 +80,7 @@ export default function Profile() {
             <ul>
               {userData?.user.reviews.map(review => (
                 <li key={review._id}>
-                  {review.service.name}: {review.comment})
+                  {review.service.name}: {review.comment}
                 </li>
               ))}
             </ul>
