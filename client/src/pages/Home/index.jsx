@@ -10,9 +10,7 @@ import { useMutation } from '@apollo/client';
 
 export default function HomePage() {
   // const [services, setServices] = useState([]);
-  const { loading, data, refetch } = useQuery(QUERY_SERVICE, {
-    pollInterval: 500
-  });
+  const { loading, data, refetch } = useQuery(QUERY_SERVICE);
 
   const serviceData = data?.services || [];
   
