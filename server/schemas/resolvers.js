@@ -145,6 +145,8 @@ const resolvers = {
         comment,
       });
 
+      await Service.findByIdAndUpdate(context.user._id, { $push: { reviews: newReview._id } });
+
       return { review: newReview };
     },
     deleteReview: async (parent, { reviewId, userId }, context) => {
@@ -170,7 +172,7 @@ const resolvers = {
 
       return deletedReview;
     },
-    
+
     createService: async (parent, { serviceName, description, userId }, context) => {
       try {
       const newService = await Service.create({

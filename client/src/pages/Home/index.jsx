@@ -15,7 +15,6 @@ export default function HomePage() {
   });
 
   const serviceData = data?.services || [];
-  
 
   // const addService = (newService) => {
   //   setServices((prevServices) => {
@@ -33,7 +32,7 @@ export default function HomePage() {
       await deleteServiceMutation({
         variables: { serviceId },
       });
-      
+
     } catch (error) {
       console.error("Error deleting service:", error);
     }
@@ -46,11 +45,9 @@ export default function HomePage() {
 
     <div className="service-list">
       {serviceData.map((service, index) => (
-        
       <div key={index} className="service-card">
-          <Review deleteService={deleteService} service = {service}/>       
-      
-        </div>
+          <Review deleteService={deleteService} service = {service}/>
+      </div>
       ))}
     </div>
   </div>

@@ -13,14 +13,11 @@ export default function Profile() {
 
   return (
     <div id="profile-page">
-      <h1>Profile</h1>
-
       {userLoading && (
         <h2 className="loading-data">
           Loading user data...
         </h2>
       )}
-
       {userData?.user && (
         <>
         <ul className="display-user">
@@ -34,7 +31,7 @@ export default function Profile() {
 
         {userData?.user.pets && userData?.user.pets.length > 0 && (
           <div>
-            <h2>My pets</h2>
+            <h2>{userData?.user.firstName} {userData?.user.lastName}'s pets</h2>
             <ul className="pet-list">
               {userData?.user.pets.map(pet =>(
                 <li className="pet-card" key={pet._id}>
@@ -61,7 +58,8 @@ export default function Profile() {
             <h2>My Services</h2>
             <ul>
               {userData?.user.services.map(service => {
-                <li key={service._id}>{service.name} - {service.description}
+                <li key={service._id}>
+                  {service.name} - {service.description}
                   <ul>
                     {service.reviews.map(review => (
                       <li key={review._id}>
