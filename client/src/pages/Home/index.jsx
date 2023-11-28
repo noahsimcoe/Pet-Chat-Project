@@ -48,12 +48,8 @@ export default function HomePage() {
       {services && services.map((service, index) => (
         
       <div key={index} className="service-card">
-          <h3>{service.name}</h3>
-          <p>{service.description}</p>
-          <Review />
-          <button onClick={() => deleteService(service._id)}>
-      🗑️ 
-    </button>
+          <Review deleteService={deleteService} service = {service}/>       
+      
         </div>
       ))}
     </div>

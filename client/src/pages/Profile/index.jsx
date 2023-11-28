@@ -7,17 +7,10 @@ import { useStoreContext } from '../../utils/store-context';
 import './style.scss';
 
 export default function Profile() {
-  const [user, dispatch] = useStoreContext('user');
   const { data: userData, loading: userLoading } = useQuery(QUERY_USER);
   // const { data: petData, loading: petLoading } = useQuery(QUERY_PETS);
   // const { data: serviceData, loading: serviceLoading } = useQuery(QUERY_SERVICE);
-
-  useEffect(() => {
-    if (userData && userData.user) {
-      dispatch({ type: USER_PROFILE, payload: userData.user })
-    }
-  }, [userData, dispatch]);
-
+  
   return (
     <div id="profile-page">
       <h1>Profile</h1>
@@ -28,33 +21,33 @@ export default function Profile() {
         </h2>
       )}
 
-      {user?.profile && (
+      {userData?.user && (
         <>
         <ul className="display-user">
           <li>
-            <span className="display-user__label">Fullname:</span> <span>{user.profile.firstName} {user.profile.lastName}</span>
+            <span className="display-user__label">Fullname:</span> <span>{userData?.user.firstName} {userData?.user.lastName}</span>
           </li>
           <li>
-            <span className="display-user__label">Email:</span> <span>{user.profile.email}</span>
+            <span className="display-user__label">Email:</span> <span>{userData?.user.email}</span>
           </li>
         </ul>
 
-        {user.profile.pets && user.profile.pets.length > 0 && (
+        {userData?.user.pets && userData?.user.pets.length > 0 && (
           <div>
             <h2>My pets</h2>
             <ul>
-              {user.profile.pets.map(pet =>(
+              {userData?.user.pets.map(pet =>(
                 <li key={pet._id}> {pet.name} - {pet.species}</li>
               ))}
             </ul>
           </div>
         )}
 
-        {user.profile.services && user.profile.services.length > 0 && (
+        {userData?.user.services && userData?.user.services.length > 0 && (
           <div>
             <h2>My Services</h2>
             <ul>
-              {user.profile.services.map(service => {
+              {userData?.user.services.map(service => {
                 <li key={service._id}>{service.name} - {service.description}
                   <ul>
                     {service.reviews.map(review => (
@@ -70,11 +63,11 @@ export default function Profile() {
           </div>
         )}
 
-        {user.profile.reviews && user.profile.reviews.length > 0 && (
+        {userData?.user.reviews && userData?.user.reviews.length > 0 && (
           <div>
             <h2>My Reviews</h2>
             <ul>
-              {user.profile.reviews.map(review => (
+              {userData?.user.reviews.map(review => (
                 <li key={review._id}>
                   {review.service.name}: {review.comment} (Rating: {review.rating})
                 </li>
