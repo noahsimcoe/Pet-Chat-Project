@@ -55,6 +55,14 @@ const CreatePet = () => {
     event.preventDefault();
 
     try {
+      if (!isImageUploaded) {
+        toast.error("Please upload an image before submitting.", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 1500,
+        });
+        return;
+      }
+
       await uploadImage();
 
       setFormState({
@@ -70,7 +78,10 @@ const CreatePet = () => {
 
       await toast.success("Your pet has been created!", {
         position: toast.POSITION.TOP_CENTER,
-        autoClose: 2250,
+        autoClose: 1500,
+        onClose: () => {
+          window.location.reload();
+        }
       });
     } catch (err) {
       console.error(err);
@@ -201,8 +212,7 @@ const CreatePet = () => {
                 </div>
                 <button
                   className="submit-btn"
-                  type="submit"
-                  disabled={!isImageUploaded}>
+                  type="submit">
                   Submit
                 </button>
               </form>
