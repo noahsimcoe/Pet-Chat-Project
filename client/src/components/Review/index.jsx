@@ -42,7 +42,7 @@ const Review = ({ service, deleteService }) => {
       <div>
         {service && (
             <div className="review-card">
-              <h5>{service.name}</h5>
+              <h5>Reviews:</h5>
               <div>
                 <h4>Leave a Review:</h4>
                 <textarea
