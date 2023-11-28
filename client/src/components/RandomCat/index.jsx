@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Form, Button } from 'react-bootstrap'; 
-
 import './style.scss';
+
 
 const CatComponent = () => {
   const [catImageUrl, setCatImageUrl] = useState('');

@@ -97,13 +97,14 @@ const CreateService = () => {
                         value={formState.description}
                         onChange={handleChange}
                       />
-                    </div>
-                    <button id='Button'
+                      <button id='Button'
                       className="btn btn-block btn-info submit-btn"
                       type="submit"
                     >
                       Create Service
                     </button>
+                    </div>
+                    
                   </div>
                 </form>
                 <div>
