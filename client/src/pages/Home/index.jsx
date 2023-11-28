@@ -10,9 +10,12 @@ import { useMutation } from '@apollo/client';
 
 export default function HomePage() {
   // const [services, setServices] = useState([]);
-  const { loading, data, refetch } = useQuery(QUERY_SERVICE);
+  const { loading, data, refetch } = useQuery(QUERY_SERVICE, {
+    pollInterval: 500
+  });
 
   const serviceData = data?.services || [];
+  
 
   // const addService = (newService) => {
   //   setServices((prevServices) => {
@@ -30,7 +33,7 @@ export default function HomePage() {
       await deleteServiceMutation({
         variables: { serviceId },
       });
-
+      
     } catch (error) {
       console.error("Error deleting service:", error);
     }
@@ -43,9 +46,11 @@ export default function HomePage() {
 
     <div className="service-list">
       {serviceData.map((service, index) => (
+        
       <div key={index} className="service-card">
           <Review deleteService={deleteService} service = {service}/>
-      </div>
+      
+        </div>
       ))}
     </div>
   </div>
