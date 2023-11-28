@@ -85,7 +85,6 @@ const CreatePet = () => {
 
   const uploadImage = async () => {
     try {
-      if (imageUpload == null) return;
       const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
       const snapshot = await uploadBytes(imageRef, imageUpload);
       const url = await getDownloadURL(snapshot.ref);
@@ -123,6 +122,8 @@ const CreatePet = () => {
       console.error(error);
     }
   };
+
+  const isImageUploaded = imageUpload !== null;
 
   return (
     <>
@@ -185,7 +186,7 @@ const CreatePet = () => {
                 </div>
                 <div id="register-page">
                   <div className="add-picture-section">
-                    <label htmlFor="file-upload" className="form-label">Upload Picture</label>
+                    <label htmlFor="file-upload" className="form-label">Upload Picture (Required)</label>
                     <div className="center">
                       <input
                         id="file-upload"
@@ -200,7 +201,8 @@ const CreatePet = () => {
                 </div>
                 <button
                   className="submit-btn"
-                  type="submit">
+                  type="submit"
+                  disabled={!isImageUploaded}>
                   Submit
                 </button>
               </form>

@@ -3,14 +3,14 @@ import { useQuery } from '@apollo/client';
 import { USER_PROFILE } from '../../utils/actions';
 import { QUERY_USER, QUERY_SERVICE, QUERY_PETS } from '../../utils/queries';
 import { useStoreContext } from '../../utils/store-context';
+import dayjs from 'dayjs';
 
 import './style.scss';
 
 export default function Profile() {
   const { data: userData, loading: userLoading } = useQuery(QUERY_USER);
-  // const { data: petData, loading: petLoading } = useQuery(QUERY_PETS);
-  // const { data: serviceData, loading: serviceLoading } = useQuery(QUERY_SERVICE);
-  
+  const currentDateTime = dayjs();
+
   return (
     <div id="profile-page">
       <h1>Profile</h1>
@@ -35,9 +35,22 @@ export default function Profile() {
         {userData?.user.pets && userData?.user.pets.length > 0 && (
           <div>
             <h2>My pets</h2>
-            <ul>
+            <ul className="pet-list">
               {userData?.user.pets.map(pet =>(
-                <li key={pet._id}> {pet.name} - {pet.species}</li>
+                <li className="pet-card" key={pet._id}>
+                  <div className="left-column">
+                    <h2>{pet.name}</h2>
+                    <img src={pet.image} alt={`Image of ${pet.name}`} height="200"></img>
+                  </div>
+                  <div className="right-column">
+                    <p>Species: {pet.species}</p>
+                    <p>Breed: {pet.breed}</p>
+                    <p>Weight: {pet.weight} lbs.</p>
+                    <p>{pet.vaccinations}</p>
+                    <p>Birthday: {dayjs(pet.birthdate).format('MMMM D, YYYY')}</p>
+                    <p>Age: {currentDateTime.diff(pet.birthdate, 'year')} year(s) old.</p>
+                  </div>
+                </li>
               ))}
             </ul>
           </div>
@@ -53,6 +66,7 @@ export default function Profile() {
                     {service.reviews.map(review => (
                       <li key={review._id}>
                         Review By {review.user.firstName}: {review.comment})
+
                       </li>
                     ))}
                   </ul>
