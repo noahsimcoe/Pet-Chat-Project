@@ -119,14 +119,17 @@ export const DELETE_PET = gql`
 `;
 export const CREATE_REVIEW = gql`
   mutation createReview($userId: ID!, $serviceId: ID!, $comment: String) {
-    createReview(userId: $userId, serviceId: $serviceId, comment: $comment) {
+    createReview(userId: $userId, service: $serviceId, comment: $comment) {
       _id
       user {
         _id
         firstName
         lastName
       }
-      serviceId
+      service {
+        name
+        description
+      }
       comment
     }
   }

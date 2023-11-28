@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_REVIEW } from "../../utils/mutations";
 
-const Review = ({ services, deleteService }) => {
+const Review = ({ service, deleteService }) => {
   const [reviewContent, setReviewContent] = useState("");
   const [createReview] = useMutation(CREATE_REVIEW);
 
@@ -47,19 +47,20 @@ const Review = ({ services, deleteService }) => {
   return (
     <div className="review-section">
       <div>
-        <h4>Leave a Review:</h4>
-        <textarea
-          placeholder="Leave a review"
-          value={reviewContent}
-          onChange={(e) => setReviewContent(e.target.value)}
-        />
-        <button onClick={() => handleReviewSubmit(service._id)}>Leave Review</button>
-      </div>
-      <div>
-        {services &&
-          services.map((service, index) => (
-            <div key={index} className="review-card">
+        {service && (
+            <div className="review-card">
               <h5>{service.name}</h5>
+              <div>
+                <h4>Leave a Review:</h4>
+                <textarea
+                  placeholder="Leave a review"
+                  value={reviewContent}
+                  onChange={(e) => setReviewContent(e.target.value)}
+                />
+                <button onClick={() => handleReviewSubmit(service._id)}>
+                  Leave Review
+                </button>
+              </div>
               {service.reviews && service.reviews.length > 0 && (
                 <div>
                   <h6>Reviews:</h6>
@@ -72,7 +73,7 @@ const Review = ({ services, deleteService }) => {
               )}
               <button onClick={() => deleteService(service._id)}>🗑️</button>
             </div>
-          ))}
+          )}
       </div>
     </div>
   );

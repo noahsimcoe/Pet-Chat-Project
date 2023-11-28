@@ -136,7 +136,7 @@ const resolvers = {
 
     createReview: async (
       parent,
-      { userId, service, rating, comment },
+      { service, rating, comment },
       context,
       info
     ) => {
@@ -173,7 +173,7 @@ const resolvers = {
       return deletedReview;
     },
     
-    createService: async (parent, { serviceName, description, userId }, context, info) => {
+    createService: async (parent, { serviceName, description, userId }, context) => {
       try {
       const newService = await Service.create({
         name: serviceName,
@@ -182,6 +182,8 @@ const resolvers = {
       });
 
       console.log('service created successfully', newService)
+
+      await User.findByIdAndUpdate(context.user._id, { $push: { services: newService._id } });
       return { Service: newService };
     } catch (error) {
       console.error('Error creating service:', error);
