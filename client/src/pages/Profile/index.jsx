@@ -55,7 +55,7 @@ export default function Profile() {
           <div>
             <h2>My Services</h2>
             <ul>
-              {userData?.user.services.map(service => {
+              {userData?.user.services.map(service => (
                 <li key={service._id}>
                   {service.name} - {service.description}
                   <ul>
@@ -67,7 +67,7 @@ export default function Profile() {
                     ))}
                   </ul>
                 </li>
-              })}
+              ))}
             </ul>
           </div>
         )}
