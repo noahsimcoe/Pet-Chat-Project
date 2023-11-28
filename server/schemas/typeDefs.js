@@ -43,7 +43,6 @@ const typeDefs = `
     _id: ID
     user: User
     service: Service
-    rating: Int
     comment: String
   }
 
@@ -75,7 +74,7 @@ const typeDefs = `
     createPet(name: String!, species: String, breed: String, birthdate: String, image: String, weight: Float, height: Float, vaccinations: Boolean): Pet
     editPet(input: EditPetInput!): EditPetResponse
     deletePet(petId: ID!, userId: ID!): Pet
-    createReview(userId: ID!, service: String!, rating: Int!, comment: String): Review
+    createReview(userId: ID!, service: String!, comment: String): Review
     deleteReview(reviewId: ID!, userId: ID!): Review
     createService(serviceId: ID, serviceName: String!, description: String!): Service
     deleteService(serviceId: ID!, userId: ID): Service

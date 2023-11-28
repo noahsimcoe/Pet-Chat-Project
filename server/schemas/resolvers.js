@@ -136,20 +136,18 @@ const resolvers = {
 
     createReview: async (
       parent,
-      { service, rating, comment },
+      { service, comment },
       context,
-      info
     ) => {
       const newReview = await Review.create({
         user: userId,
         service,
-        rating,
         comment,
       });
 
       return { review: newReview };
     },
-    deleteReview: async (parent, { reviewId, userId }, context, info) => {
+    deleteReview: async (parent, { reviewId, userId }, context) => {
       if (!context.user) {
         throw AuthenticationError;
       }
@@ -191,7 +189,7 @@ const resolvers = {
     } 
   },
 
-    deleteService: async (parent, { serviceId, userId }, context, info) => {
+    deleteService: async (parent, { serviceId, userId }, context) => {
       if (!context.user) {
         throw AuthenticationError;
       }

@@ -13,10 +13,6 @@ const reviewSchema = new Schema({
     ref: 'Service',
     required: true,
   },
-  rating: {
-    type: Number,
-    required: true,
-  },
   comment: String,
 }, { timestamps: true });
 
