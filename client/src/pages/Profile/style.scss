@@ -1,98 +1,108 @@
-#profile-page {
-    h1 {
-        margin: 4rem auto;
-        text-align: center;
-    }
-    h2 {
-        color: beige;
-    }
-
-    .loading-data {
-        width: 90%;
-        max-width: 600px;
-        margin: 2rem auto;
-        text-align: center;
-    }
-
-    .display-user {
-        width: 90%;
-        max-width: 600px;
-        margin: 2rem auto;
-        list-style: none;
-
-        li {
-            padding: 0;
-            margin: 1rem 0;
-            color: #555;
-
-            .display-user__label {
-                font-weight: bold;
-                margin-right: 1rem;
-                color: #000;
-            }
-        }
-    }
-    
-    @media screen and (max-width: 780px) {
-        h1 {
-            margin: 2rem auto;
-        }
-        
-        .loading-data, .display-user {
-            width: 100%;
-            max-width: none;
-        }
-        
-        .display-user li {
-            margin: 0.5rem 0;
-        }
-    }
-    
-    .pet-section, .service-section {
-        text-align: center;
-    }
-    
-    
-    .pet-list {
-        list-style: none;
-        padding: 0;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        display: flex;
-        justify-content: center;
-        
-    }
-    
-    .pet-card {
-        border-radius: 8px;
-        padding: 20px;
-        width: 300px;
-        background-color: #6e7c7cd7;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        margin: 0 auto;
+#info {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #6e7c7cd7;
+  margin-bottom: 25px;
 }
 
-.pet-card h3 {
+#profile-page {
+  h1 {
+    margin: 4rem auto;
+    text-align: center;
+  }
+  h2 {
+    color: beige;
+  }
+
+  .loading-data {
+    width: 90%;
+    max-width: 600px;
+    margin: 2rem auto;
+    text-align: center;
+  }
+
+  .display-user {
+    width: 90%;
+    max-width: 600px;
+    margin: 2rem auto;
+    list-style: none;
+
+    li {
+      padding: 0;
+      margin: 1rem 0;
+      color: black;
+
+      .display-user__label {
+        font-weight: bold;
+        margin-right: 1rem;
+        color: #000;
+      }
+    }
+  }
+
+  @media screen and (max-width: 780px) {
+    h1 {
+      margin: 2rem auto;
+    }
+
+    .loading-data,
+    .display-user {
+      width: 100%;
+      max-width: none;
+    }
+
+    .display-user li {
+      margin: 0.5rem 0;
+    }
+  }
+
+  .pet-section,
+  .service-section {
+    text-align: center;
+  }
+
+  .pet-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .pet-card {
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    background-color: #6e7c7cd7;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+  }
+
+  .pet-card h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
-}
+  }
 
-.pet-card p {
+  .pet-card p {
     margin-bottom: 8px;
-}
+  }
 
-.pet-card img {
+  .pet-card img {
     width: 100%;
     height: auto;
     display: block;
     border-radius: 4px;
     margin-top: 10px;
-}
+  }
 
-margin-bottom: 300px;
+  margin-bottom: 300px;
 
-.service-card {
+  .service-card {
     margin: 20px auto;
     padding: 20px;
     background-color: #6e7c7cd7;
@@ -100,16 +110,15 @@ margin-bottom: 300px;
     border-radius: 8px;
     width: 300px;
     text-align: left;
-}
+  }
 
-.service-name {
+  .service-name {
     font-weight: bold;
     font-size: 1rem;
     margin-bottom: 10px;
-}
+  }
 
-.service-description {
+  .service-description {
     margin-bottom: 15px;
-}
-
+  }
 }

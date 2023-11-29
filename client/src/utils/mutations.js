@@ -1,8 +1,18 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const CREATE_USER = gql`
-  mutation createUser($firstName: String!, $lastName: String!, $email: String!, $password: String!) {
-    createUser(firstName: $firstName, lastName: $lastName, email: $email, password: $password) {
+  mutation createUser(
+    $firstName: String!
+    $lastName: String!
+    $email: String!
+    $password: String!
+  ) {
+    createUser(
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      password: $password
+    ) {
       token
       user {
         firstName
@@ -40,22 +50,39 @@ export const SIGNIN_MUTATION = gql`
 `;
 
 export const CREATE_PET = gql`
-  mutation createPet($name: String!, $species: String, $breed: String, $birthdate: String, $image: String, $weight: Float, $height: Float, $vaccinations: Boolean) {
-    createPet(name: $name, species: $species, breed: $breed, birthdate: $birthdate, image: $image, weight: $weight, height: $height, vaccinations: $vaccinations
+  mutation createPet(
+    $name: String!
+    $species: String
+    $breed: String
+    $birthdate: String
+    $image: String
+    $weight: Float
+    $height: Float
+    $vaccinations: Boolean
+  ) {
+    createPet(
+      name: $name
+      species: $species
+      breed: $breed
+      birthdate: $birthdate
+      image: $image
+      weight: $weight
+      height: $height
+      vaccinations: $vaccinations
     ) {
+      _id
+      name
+      species
+      breed
+      owner {
         _id
-        name
-        species
-        breed
-        owner {
-          _id
-        }
-        birthdate
-        image
-        weight
-        height
-        vaccinations
       }
+      birthdate
+      image
+      weight
+      height
+      vaccinations
+    }
   }
 `;
 
@@ -136,28 +163,28 @@ export const CREATE_REVIEW = gql`
 `;
 
 export const DELETE_REVIEW = gql`
-mutation DeleteReview($reviewId: ID!) {
-  deleteReview(reviewId: $reviewId) {
-    _id
-    user {
+  mutation DeleteReview($reviewId: ID!) {
+    deleteReview(reviewId: $reviewId) {
       _id
-      firstName
+      user {
+        _id
+        firstName
+      }
+      service
+      comment
     }
-    service
-    comment
   }
-}
 `;
 
 export const CREATE_SERVICE = gql`
-  mutation createService($serviceName: String!, $description: String!,) {
-    createService(serviceName: $serviceName, description: $description,) {
+  mutation createService($serviceName: String!, $description: String!) {
+    createService(serviceName: $serviceName, description: $description) {
       _id
-        name
-        description
-        provider {
-          _id
-          firstName
+      name
+      description
+      provider {
+        _id
+        firstName
       }
     }
   }

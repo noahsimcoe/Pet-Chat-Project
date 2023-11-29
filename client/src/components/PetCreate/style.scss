@@ -1,58 +1,57 @@
 .createPetCard {
-    width: 300px;
-    margin: 0 auto;
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    background-color: #6e7c7cd7;
-    margin-bottom: 25%;
-  }
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #6e7c7cd7;
+  margin-bottom: 25%;
+}
 
-  .submit-btn {
-    background-color: #007bff;
-    border-radius: 8px;
-    display: block;
-    width: 150px;
-    margin: 0 auto;
-    padding: 10px;
-    color: white;
-    text-align: center;
-    cursor: pointer;
-    border: none;
-    outline: none;
-  }
+.submit-btn {
+  background-color: #007bff;
+  border-radius: 8px;
+  display: block;
+  width: 150px;
+  margin: 0 auto;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
 
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-  }
-  
-  label {
-    margin-bottom: 5px;
-  }
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
 
-  .form-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    box-sizing: border-box;
-  }
+label {
+  margin-bottom: 5px;
+}
 
+.form-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
 
-  .form-input::placeholder {
-    color: #999;
-  }
+.form-input::placeholder {
+  color: #999;
+}
 
-  .form-input:hover,
-  .form-input:focus {
-    border-color: #5e9ad6;
-    outline: none;
-  }
+.form-input:hover,
+.form-input:focus {
+  border-color: #5e9ad6;
+  outline: none;
+}
 
 .form-group {
   margin-bottom: 15px;

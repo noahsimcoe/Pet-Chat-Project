@@ -1,25 +1,24 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-import { Card, Form, Button } from 'react-bootstrap'; 
-import { CREATE_USER } from '../../utils/mutations';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { Card, Form, Button } from "react-bootstrap";
+import { CREATE_USER } from "../../utils/mutations";
 
+import Auth from "../../utils/auth";
 
-import Auth from '../../utils/auth';
-
-import './style.scss';
+import "./style.scss";
 
 const Signup = () => {
   const [formState, setFormStage] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
   });
   const [createUser, { error, data }] = useMutation(CREATE_USER);
 
   const handleChange = (event) => {
-    const { name, value } = event.target; 
+    const { name, value } = event.target;
 
     setFormStage({
       ...formState,
@@ -42,13 +41,13 @@ const Signup = () => {
   };
 
   return (
-    <Card className="signup-card" >
+    <Card className="signup-card">
       <Card.Body>
-        <Card.Title className='card-title'>Sign Up</Card.Title>
+        <Card.Title className="card-title">Sign Up</Card.Title>
         <Form onSubmit={handleFormSubmit}>
           <Form.Group controlId="formFirstName">
             <div>
-            <Form.Label>First Name</Form.Label>
+              <Form.Label>First Name</Form.Label>
             </div>
             <Form.Control
               className="form-input"
@@ -62,7 +61,7 @@ const Signup = () => {
 
           <Form.Group controlId="formLastName">
             <div>
-            <Form.Label>Last Name</Form.Label>
+              <Form.Label>Last Name</Form.Label>
             </div>
             <Form.Control
               className="form-input"
@@ -76,7 +75,7 @@ const Signup = () => {
 
           <Form.Group controlId="formEmail">
             <div>
-            <Form.Label>Email Address</Form.Label>
+              <Form.Label>Email Address</Form.Label>
             </div>
             <Form.Control
               className="form-input"
@@ -90,7 +89,7 @@ const Signup = () => {
 
           <Form.Group controlId="formPassword">
             <div>
-            <Form.Label>Password</Form.Label>
+              <Form.Label>Password</Form.Label>
             </div>
             <Form.Control
               className="form-input"
@@ -104,7 +103,7 @@ const Signup = () => {
 
           <Button
             className="btn-block  submit-btn"
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
             type="submit"
           >
             Submit
@@ -113,15 +112,12 @@ const Signup = () => {
 
         {data ? (
           <p>
-            Success! You may now head{' '}
-            <Link to="/">back to the homepage.</Link>
+            Success! You may now head <Link to="/">back to the homepage.</Link>
           </p>
         ) : null}
 
         {error && (
-          <div className="my-3 p-3 bg-danger text-white">
-            {error.message}
-          </div>
+          <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
         )}
       </Card.Body>
     </Card>

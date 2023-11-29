@@ -9,12 +9,10 @@ import { DELETE_SERVICE } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
 
 export default function HomePage() {
-  // const [services, setServices] = useState([]);
   const { loading, data, refetch } = useQuery(QUERY_SERVICE);
 
   const serviceData = data?.services || [];
 
-  //comment
   const addService = (newService) => {
     setServices((prevServices) => {
       const updatedServices = [...prevServices, newService];
@@ -31,7 +29,7 @@ export default function HomePage() {
       await deleteServiceMutation({
         variables: { serviceId },
       });
-      
+
       refetch();
     } catch (error) {
       console.error("Error deleting service:", error);
@@ -40,20 +38,26 @@ export default function HomePage() {
 
   return (
     <div className="home-page">
-      <CatComponent />
-      <CreateService />
+      <div class="comps">
+        <CatComponent />
 
-      <div className="service-list">
-        {serviceData.map((service, index) => (
-          <div key={index} className="service-card">
-            <h3>{service.name}</h3>
-            <p>{service.description}</p>
+        <div>
+          <CreateService />
+          <div class="servCont">
+            <div className="service-list">
+              {serviceData.map((service, index) => (
+                <div key={index} className="service-card">
+                  <h3>{service.name}</h3>
+                  <p>{service.description}</p>
 
-            {/* <Review deleteService={deleteService} service = {service}/> */}
+                  {/* <Review deleteService={deleteService} service = {service}/> */}
 
-            <button onClick={() => deleteService(service._id)}>🗑️</button>
+                  <button onClick={() => deleteService(service._id)}>🗑️</button>
+                </div>
+              ))}
+            </div>
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );

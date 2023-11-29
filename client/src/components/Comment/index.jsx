@@ -1,10 +1,9 @@
-
-import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { CREATE_REVIEW, DELETE_REVIEW } from '../../utils/mutations';
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { CREATE_REVIEW, DELETE_REVIEW } from "../../utils/mutations";
 
 const Comment = ({ serviceId, comments }) => {
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState("");
 
   const [createReview] = useMutation(CREATE_REVIEW);
   const [deleteReview] = useMutation(DELETE_REVIEW);
@@ -13,24 +12,19 @@ const Comment = ({ serviceId, comments }) => {
     setComment(event.target.value);
   };
 
-  
-
   const handleCommentSubmit = async (event) => {
     event.preventDefault();
     try {
       await createReview({
         variables: {
-          userId: '',
+          userId: "",
           service: serviceId,
-          
+
           comment: comment,
         },
       });
 
-      
-
-      setComment('');
-      
+      setComment("");
     } catch (error) {
       console.error(error);
     }
@@ -43,8 +37,6 @@ const Comment = ({ serviceId, comments }) => {
           reviewId: reviewId,
         },
       });
-
-      
     } catch (error) {
       console.error(error);
     }
@@ -56,8 +48,9 @@ const Comment = ({ serviceId, comments }) => {
       <ul>
         {comments.map((comment) => (
           <li key={comment._id}>
-          
-            <button onClick={() => handleDeleteComment(comment._id)}>Delete</button>
+            <button onClick={() => handleDeleteComment(comment._id)}>
+              Delete
+            </button>
           </li>
         ))}
       </ul>
@@ -67,8 +60,7 @@ const Comment = ({ serviceId, comments }) => {
           onChange={handleCommentChange}
           placeholder="Leave a comment..."
         />
-        
-      
+
         <button type="submit">Submit Comment</button>
       </form>
     </div>

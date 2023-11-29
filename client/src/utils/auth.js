@@ -1,8 +1,8 @@
-import { jwtDecode } from 'jwt-decode';
+import { jwtDecode } from "jwt-decode";
 
 class AuthService {
   getToken() {
-    return localStorage.getItem('id_token');
+    return localStorage.getItem("id_token");
   }
 
   getProfile() {
@@ -19,7 +19,7 @@ class AuthService {
       const decoded = jwtDecode(token);
 
       if (decoded.exp < Date.now() / 1000) {
-        localStorage.removeItem('id_token');
+        localStorage.removeItem("id_token");
         return true;
       }
 
@@ -30,13 +30,13 @@ class AuthService {
   }
 
   login(idToken) {
-    localStorage.setItem('id_token', idToken);
-    window.location.assign('/');
+    localStorage.setItem("id_token", idToken);
+    window.location.assign("/");
   }
 
   logout() {
-    localStorage.removeItem('id_token');
-    window.location.assign('/');
+    localStorage.removeItem("id_token");
+    window.location.assign("/");
   }
 }
 
