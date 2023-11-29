@@ -1,50 +1,49 @@
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-    position: relative;
-  }
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
+}
 
-  #footer {
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #435560;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 10px;
-    margin-top: auto;
-    position: absolute;
+#footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #435560;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 10px;
+  margin-top: auto;
+  position: absolute;
+}
 
-  }
+#link-box {
+  display: flex;
+  padding-bottom: 5px;
+  align-items: flex-start;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
 
-  #link-box {
-    display: flex;
-    padding-bottom: 5px;
-    align-items: flex-start;
-    justify-content: space-around;
-    flex-wrap: wrap;
-  }
+#link-box a {
+  text-decoration: none;
+  margin: 0 40px;
+  font-size: 32px;
+}
 
+#link-box > div {
+  text-align: center;
+}
+
+#link-box > div h5 {
+  margin-top: 5px;
+}
+
+@media screen and (max-width: 600px) {
   #link-box a {
-    text-decoration: none;
-    margin: 0 40px;
-    font-size: 32px;
+    font-size: 18px;
   }
-
-  #link-box > div {
-    text-align: center;
-  }
-
-  #link-box > div h5 {
-    margin-top: 5px;
-  }
-
-  @media screen and (max-width: 600px) {
-    #link-box a {
-      font-size: 18px;
-    }
-  }
+}
