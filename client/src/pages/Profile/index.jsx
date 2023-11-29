@@ -28,7 +28,7 @@ export default function Profile() {
         </ul>
 
         {userData?.user.pets && userData?.user.pets.length > 0 && (
-          <div>
+          <div className='pet-section'>
             <h2>{userData?.user.firstName} {userData?.user.lastName}'s pets</h2>
             <ul className="pet-list">
               {userData?.user.pets.map(pet =>(
@@ -52,12 +52,13 @@ export default function Profile() {
         )}
 
         {userData?.user.services && userData?.user.services.length > 0 && (
-          <div>
+          <div className='service-section'>
             <h2>My Services</h2>
             <ul>
               {userData?.user.services.map(service => (
-                <li key={service._id}>
-                  {service.name} - {service.description}
+                <li className='service-card' key={service._id}>
+                  <div className='service-name'>{service.name}</div>
+                  <div className='service-description'>{service.description}</div>
                   <ul>
                     {service.reviews.map(review => (
                       <li key={review._id}>
