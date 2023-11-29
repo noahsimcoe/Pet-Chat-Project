@@ -1,4 +1,3 @@
-// Review.js
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_REVIEW } from "../../utils/mutations";
@@ -31,7 +30,6 @@ const Review = ({ service, deleteService }) => {
   const handleReviewSubmit = async (serviceId) => {
     try {
       
-      // You may want to refetch services or update the local cache here
     } catch (error) {
       console.error(error);
     }
