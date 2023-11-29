@@ -78,7 +78,16 @@ const handleChange = (event) => {
 
 return (
   <div className='contact-page'>
-    <h1 className='contact-header'>Contact Me</h1>
+    <h1 className='contact-header'>Contact Us!</h1>
+    <p className='contact-description'>"Are you interested in collaborating with us or
+      have questions about our project? We would love
+      to hear from you! Whether it's a suggestion, a
+      creative idea, or a query, your input is valuable
+      to us. Please feel free to contact us via the form
+      below. We are always open to new ideas and discussions
+      and look forward to connecting with like-minded people
+      passionate about making a positive impact. Let's
+      explore the possibilities together!</p>
 
     <div className="container">
       <div>
