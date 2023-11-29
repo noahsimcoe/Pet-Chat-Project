@@ -1,8 +1,23 @@
 # Pet Chat Project
- * Here will be picture of the project.
+
+<p align="center">
+  <img src="./client/src/assets/images/home.png" alt="Home page of Pet Chat Project">
+</p>
+
 ## Description
 This project is an online meeting place for pet enthusiasts, where you can gush about your furry friends and share all those cute and fun moments. Imagine a place where you can find or offer interesting services like pet grooming or even find someone to take care of your pet when you are away. Additionally, you can leave reviews on these services to know who's meowing in pet care. It's more than just a place; is a community where you can connect, exchange advice, and support each other in the incredible adventure of pet ownership.
 
+<p align="center">
+  <img src="./client/src/assets/images/profile.png" alt="Profile page of Pet Chat">
+</p>
+
+<p align="center">
+  <img src="./client/src/assets/images/register.png" alt="Register a Pet page of Pet Chat">
+</p>
+
+<p align="center">
+  <img src="./client/src/assets/images/contact-us.png" alt="Contact page of Pet Chat">
+</p>
 
 ## Table of Content
   * [Description](#description)
