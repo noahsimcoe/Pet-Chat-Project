@@ -65,7 +65,7 @@ export default function Profile() {
 
           {userData?.user.services && userData?.user.services.length > 0 && (
             <div className="service-section">
-              <h2>My Services</h2>
+              <h2>My Services:</h2>
               <ul>
                 {userData?.user.services.map((service) => (
                   <li className="service-card" key={service._id}>
